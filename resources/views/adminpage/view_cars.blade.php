@@ -41,5 +41,6 @@
         <h4 class="alert alert-warning mb-2"> {{ session('status') }} </h4>
     @endif
 
+    <h3> Ini buat view mobil </h3>
 
 @endsection
