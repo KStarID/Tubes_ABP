@@ -15,14 +15,14 @@ class CarsController extends Controller
     public function __construct(Database $database)
     {
         $this->database = $database;
-        $this->tablename = 'data';
+        $this->tablename = 'cars';
     }
 
     public function index()
     {
 
         $reference = $this->database->getReference($this->tablename)->getValue();
-        return view('welcome', compact('reference'));
+        return view('adminpage.cars', compact('reference'));
     }
 
     public function create()
@@ -33,15 +33,14 @@ class CarsController extends Controller
     public function store(Request $request)
     {
         $post_data = [
-            'author' => $request->author,
-            'category' => $request->category,
-            'description' => $request->description,
-            'title' => $request->title,
+            'merk' => $request->merk,
+            'nama' => $request->nama,
+            'harga' => $request->harga,
         ];
         $postRef = $this->database->getReference($this->tablename)->push($post_data);
         if ($postRef) {
             Session::flash('message', 'New Cars Created');
-            return back()->withInput();
+            return back()->withInput()->with('status', 'success');
         } else {
             return redirect('/home/admin')->with('status', 'error');
         }

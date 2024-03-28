@@ -34,9 +34,7 @@
     @endguest
 @endsection
 
-
-
-@section('content')
+@section('sidebar')
     <style>
         /* Your styles here */
         body {
@@ -88,7 +86,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-12 p-3">
                 <div class="list-group">
-                    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action mb-3 border"
+                    <a href="/home/admin" class="list-group-item list-group-item-action mb-3 border"
                         id="dashboardLink">Dashboard</a>
                     <a href="{{ route('cars') }}" class="list-group-item list-group-item-action mb-3 border active"
                         id="carsLink">Cars</a>
@@ -97,3 +95,25 @@
         </div>
     </div>
 @endsection
+
+@section('content')
+    <div class="container">
+        <div class="col-md-6">
+            @if (session('status'))
+                <h4 class="alert alert-warning mb-2"> {{ session('status') }} </h4>
+            @endif
+
+            <div class="card">
+                <div class="card-header">
+                    <h4>Cars List
+
+                    </h4>
+                    <a href="{{ route('add_cars') }}">Add Cars</a>
+                </div>
+                <div class="card-body">
+                </div>
+            </div>
+
+
+        </div>
+    @endsection

@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::get('/', [App\Http\Controllers\Firebase\CarsController::class, 'index']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
@@ -31,18 +33,21 @@ Route::get('/home/iamadmin', [App\Http\Controllers\MakeAdminController::class, '
 
 Route::resource('/home/profile', App\Http\Controllers\Auth\ProfileController::class)->middleware('user', 'fireauth');
 
-Route::resource('/home/admin', App\Http\Controllers\Auth\AdminController::class)
-    ->middleware('user')
-    ->middleware('fireauth');
+Route::resource('/home/admin', App\Http\Controllers\Auth\AdminController::class)->middleware(['user', 'fireauth']);
 
 Route::middleware(['auth', 'fireauth'])->group(function () {
     Route::get('/home/dashboard', function () {
-        return view('auth.dashboard');
+        return view('adminpage.dashboard');
     })->name('dashboard');
 
-    Route::get('/home/cars', function () {
-        return view('auth.cars');
-    })->name('cars');
+    Route::get('/home/cars', [App\Http\Controllers\Firebase\CarsController::class, 'index'])
+        ->name('cars');
+
+    Route::get('/home/cars/add_cars', function () {
+        return view('adminpage\add_cars');
+    })->name('add_cars');
+
+    Route::post('/home/cars/add_cars', [App\Http\Controllers\Firebase\CarsController::class, 'store'])->name('add_cars');
 });
 
 Route::resource('/password/reset', App\Http\Controllers\Auth\ResetController::class);
