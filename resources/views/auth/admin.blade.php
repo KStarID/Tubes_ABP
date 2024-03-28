@@ -124,7 +124,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-12 p-3">
                 <div class="list-group">
-                    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action mb-3 border active"
+                    <a href="#" class="list-group-item list-group-item-action mb-3 border active"
                         id="dashboardLink">Dashboard</a>
                     <a href="{{ route('cars') }}" class="list-group-item list-group-item-action mb-3 border active"
                         id="CarsLink">Cars</a>
