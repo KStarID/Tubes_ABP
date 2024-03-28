@@ -103,17 +103,60 @@
                 <h4 class="alert alert-warning mb-2"> {{ session('status') }} </h4>
             @endif
 
-            <div class="card">
-                <div class="card-header">
-                    <h4>Cars List
+    <style>
+        .box-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
 
-                    </h4>
-                    <a href="{{ route('add_cars') }}">Add Cars</a>
-                </div>
-                <div class="card-body">
-                </div>
-            </div>
+        .box {
+            width: 200px;
+            height: 150px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
 
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
 
+        .box a {
+            text-decoration: none;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .box button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .box button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <div class="box-container">
+        <div class="box">
+            <h3>Add Cars</h3>
+            <a href="{{ route('add_cars') }}"><button>Add Cars</button></a>
         </div>
+        <div class="box">
+            <h3>View Cars</h3>
+            <a href="{{ route('view_cars') }}"><button>View Cars</button></a>
+        </div>
+    </div>
     @endsection
