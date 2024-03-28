@@ -7,11 +7,7 @@
 
 ## Installation
 
-Use **COMPOSER** for cloning the project
-
-```bash
-composer create-project suhasrkms/lara-fire project_name
-```
+Use **git clone** for cloning the project
 
 Generate a **new private key** in firebase and paste the key in **resources\credentials\firebase_credentials.json**
 
@@ -23,7 +19,5 @@ php artisan serve
 
 ## Thanks for downloading this project!
 
--   Project Name: Lara Fire
--   Project URL: https://github.com/suhasrkms/lara-fire
--   Author: Suhas R
--   Author URL: https://suhasrkms.github.io
+-   Project Name: Tubes_ABP
+-   Project URL: https://github.com/KStarID/Tubes_ABP
