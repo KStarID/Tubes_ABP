@@ -15,5 +15,5 @@ php artisan serve
 
 ## Thanks for downloading this project!
 
--   Project Name: Tubes_ABP_2024
+-   Project Name: Tubes_ABP
 -   Project URL: https://github.com/KStarID/Tubes_ABP
