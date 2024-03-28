@@ -52,6 +52,10 @@ Route::middleware(['auth', 'fireauth'])->group(function () {
     })->name('view_cars');
 
     Route::post('/home/cars/add_cars', [App\Http\Controllers\Firebase\CarsController::class, 'store'])->name('add_cars');
+
+    Route::get('/home/cars/view_cars', function () {
+        return view('admin');
+    });
 });
 
 Route::resource('/password/reset', App\Http\Controllers\Auth\ResetController::class);
