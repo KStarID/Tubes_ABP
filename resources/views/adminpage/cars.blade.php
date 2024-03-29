@@ -132,7 +132,8 @@
                                             <td> {{ $item['harga'] }} </td>
                                             <td> {{ $item['deskripsi'] }} </td>
                                             <td> {{ $item['kontak_penjual'] }} </td>
-                                            <td>Edit</td>
+                                            <td><a href="{{ url('/home/cars/edit_cars/' . $key) }}"
+                                                    class="btn btn-primary">Edit</a></td>
                                             <td>Delete</td>
                                         @endif
                                     </tr>
