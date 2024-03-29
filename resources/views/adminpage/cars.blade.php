@@ -132,8 +132,15 @@
                                             <td> {{ $item['harga'] }} </td>
                                             <td> {{ $item['deskripsi'] }} </td>
                                             <td> {{ $item['kontak_penjual'] }} </td>
-                                            <td>Edit</td>
-                                            <td>Delete</td>
+                                            <td><a href="" class="btn btn-sm btn-success">Edit</a></td>
+                                            
+                                        <td>
+                                            <form action="{{ route('delete_cars', ['id' => $key]) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                        </td>
                                         @endif
                                     </tr>
                                 @empty
