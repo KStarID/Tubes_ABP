@@ -54,5 +54,35 @@ class CarsController extends Controller
         } else {
             return redirect('/home/admin')->with('status', 'error');
         }
+        
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    public function delete_cars($id)
+    {
+        $key = $id;
+        $del_cars = $this->database->getReference($this->tablename. '/' .$key)->remove();
+        if ($del_cars) {
+            Session::flash('message', 'Delete Cars Success');
+            return redirect('/home/cars');
+        } else {
+            return redirect('/home/admin')->with('status', 'Delete not Success');
+        }
+    }
+
 }
