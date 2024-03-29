@@ -132,21 +132,16 @@
                                             <td> {{ $item['harga'] }} </td>
                                             <td> {{ $item['deskripsi'] }} </td>
                                             <td> {{ $item['kontak_penjual'] }} </td>
-<<<<<<< HEAD
-                                            <td><a href="" class="btn btn-sm btn-success">Edit</a></td>
-                                            
-                                        <td>
-                                            <form action="{{ route('delete_cars', ['id' => $key]) }}" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                            </form>
-                                        </td>
-=======
                                             <td><a href="{{ url('/home/cars/edit_cars/' . $key) }}"
-                                                    class="btn btn-primary">Edit</a></td>
-                                            <td>Delete</td>
->>>>>>> features
+                                                    class="btn btn-sm btn-success">Edit</a></td>
+                                            <td>
+                                                <form action="{{ route('delete_cars', ['id' => $key]) }}" method="post"
+                                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
                                         @endif
                                     </tr>
                                 @empty
