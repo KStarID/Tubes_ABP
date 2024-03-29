@@ -22,7 +22,7 @@ class CarsController extends Controller
     {
         $email_penjual = auth()->user()->email;
         $reference = $this->database->getReference($this->tablename)->getValue($email_penjual);
-        return view('adminpage.view_cars', compact('reference'));
+        return view('adminpage.cars', compact('reference', 'email_penjual'));
     }
 
     public function create()
