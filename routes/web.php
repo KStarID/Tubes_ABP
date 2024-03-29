@@ -47,10 +47,18 @@ Route::middleware(['auth', 'fireauth'])->group(function () {
     })->name('add_cars');
 
     Route::get('/home/cars/view_cars', [App\Http\Controllers\Firebase\CarsController::class, 'index'])->name('view_cars');
-
     Route::post('/home/cars/add_cars', [App\Http\Controllers\Firebase\CarsController::class, 'store'])->name('add_cars');
+<<<<<<< HEAD
 
     Route::delete('/home/cars/delete_cars/{id}', [App\Http\Controllers\Firebase\CarsController::class, 'delete_cars'])->name('delete_cars');
+=======
+    Route::get('/home/cars/edit_cars/{id}', [App\Http\Controllers\Firebase\CarsController::class, 'edit_cars'])->name('edit_cars');
+    Route::put('/home/cars/update_cars/{id}', [App\Http\Controllers\Firebase\CarsController::class, 'update_cars'])->name('update_cars');
+
+    Route::get('/home/image', [App\Http\Controllers\Firebase\ImageController::class, 'index'])->name('image');
+    Route::post('/home/image', [App\Http\Controllers\Firebase\ImageController::class, 'store'])->name('store_image');
+    Route::get('/home/image/delete', [App\Http\Controllers\Firebase\ImageController::class, 'destroy'])->name('delete_image');
+>>>>>>> features
 });
 
 Route::resource('/password/reset', App\Http\Controllers\Auth\ResetController::class);
