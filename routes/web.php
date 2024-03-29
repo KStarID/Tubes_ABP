@@ -40,9 +40,7 @@ Route::middleware(['auth', 'fireauth'])->group(function () {
         return view('adminpage.dashboard');
     })->name('dashboard');
 
-    Route::get('/home/cars', function () {
-        return view('adminpage.cars');
-    })->name('cars');
+    Route::get('/home/cars', [App\Http\Controllers\Firebase\CarsController::class, 'index'])->name('cars');
 
     Route::get('/home/cars/add_cars', function () {
         return view('adminpage\add_cars');
