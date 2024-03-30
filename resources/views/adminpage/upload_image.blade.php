@@ -1,25 +1,40 @@
 @extends('layouts.app')
+@section('navbar_home')
+    @guest
+        @if (Route::has('login'))
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
+        @endif
+
+        @if (Route::has('register'))
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            </li>
+        @endif
+    @else
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="/home/profile">{{ __('Profile') }}</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="{{ url('/home') }}">Home</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark active" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </li>
+    @endguest
+@endsection
 
 @section('content')
-    <style>
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .upload-section {
-            margin-right: 20px;
-        }
-
-        .uploaded-photo {
-            max-width: 300px;
-            max-height: 300px;
-        }
-    </style>
-    {{-- Error and Status Card --}}
-
     @if (Session::has('message'))
         <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
             <strong>{{ Session::get('message') }}</strong>
@@ -78,7 +93,4 @@
             </div>
         </div>
     </div>
-
-
-
 @endsection
