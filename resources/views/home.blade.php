@@ -33,11 +33,14 @@
                 @csrf
             </form>
         </li>
+        @if ($user->customClaims['admin'] == false)
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/home/iamadmin">Become Seller</a>
+            </li>
+        @endif
         </div>
-        </li>
     @endguest
-@endsection
-@section('content')
+    @endsection @section('content')
     <div class="row">
         <div class="col-md-12">
 

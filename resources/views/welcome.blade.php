@@ -28,7 +28,7 @@
 
                     <div class="card-body">
                         <div class="container text-center mt-5">
-                            <h1 class="display-5">Welcome to our <a href="https://github.com/suhasrkms/Lara-Fire">BaroCars
+                            <h1 class="display-5">Welcome to our <a href="https://barocars.up.railway.app/">BaroCars
                                     Web</a> <span>&#127881;</span></h1>
                             <p class="lead">We've seamlessly integrated Firebase into our platform, enabling powerful
                                 features like <span class="text-danger">Realtime Database</span>, <span
