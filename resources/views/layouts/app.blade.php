@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('BaroCars', 'BaroCars') }}</title>
+    <link rel="shortcut icon" href="{{ URL('..\admin_assets\img\favicon.png') }}" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
