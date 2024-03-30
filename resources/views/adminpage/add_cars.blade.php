@@ -116,11 +116,12 @@
                             [
                                 'Bensin (Gasoline)' => 'Bensin (Gasoline)',
                                 'Solar (Diesel)' => 'Solar (Diesel)',
-                                'Gas alam kendaraan (CNG)' => 'Gas alam kendaraan (CNG)',
+                                'Gas alam (CNG)' => 'Gas alam (CNG)',
                                 'Listrik (Electricity)' => 'Listrik (Electricity)',
                             ],
                             null,
-                            ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'Bensin/Solar/CNG/Listrik'],
+                            ['class' => 'form-control', 'required' => 'required',
+                             'placeholder' => 'Bensin/Solar/CNG/Listrik'],
                         ) !!}
                     </div>
                 </div>
