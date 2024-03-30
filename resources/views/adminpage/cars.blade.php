@@ -163,7 +163,7 @@
                                             <td>{{ $item['bahan_bakar'] }}</td>
                                             <td>{{ $item['warna'] }}</td>
                                             <td>{{ $item['harga'] }}</td>
-                                            <td>{{ $item['deskripsi'] }}</td>
+                                            <td style="max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item['deskripsi'] }}</td>
                                             <td>{{ $item['kontak_penjual'] }}</td>
                                             <td>
                                                 <a href="{{ url('/home/cars/edit_cars/' . $key) }}"

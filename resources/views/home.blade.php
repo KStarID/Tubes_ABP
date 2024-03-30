@@ -41,6 +41,17 @@
     @endguest
 @endsection
 
+<style>
+    .card-2 {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card-2:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
+    }
+</style>
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -52,7 +63,7 @@
                     </div>
                 @endif
 
-                <div class="card">
+                <div class="card-1">
                     <div class="card-header">
                         <h4 class="text-lg font-semibold" style="margin-left: 3rem; margin-right: 3rem;">Cars List
                             <p class="float-end">Hello, {{ $user->displayName }}</p>
@@ -66,7 +77,7 @@
         <div class="row mt-4">
             @forelse($reference as $key => $item)
                 <div class="col-md-4 mb-4">
-                    <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+                    <div class="card-2 bg-white shadow-lg rounded-lg overflow-hidden">
                         <figure>
                             <img src="{{ $item['image'] }}" alt="car!" class="object-cover w-full h-56">
                         </figure>
@@ -74,11 +85,12 @@
                             <h2 class="text-xl font-semibold">{{ $item['merk'] }} {{ $item['model'] }}
                                 ({{ $item['tahun_pembuatan'] }})
                             </h2>
-                            <p class="text-sm text-gray-600">Condition : {{ $item['kondisi'] }}</p>
-                            <p class="text-sm text-gray-600">Price : {{ $item['harga'] }}</p>
-                            <div class="flex justify-end mt-2">
+                            <p class="text-sm text-black">Kondisi : {{ $item['kondisi'] }}</p>
+                            <p class="text-sm text-black">Harga : Rp. {{ $item['harga'] }}</p>
+                            <div class="flex justify-end mt-1">
                                 <a href="{{ url('/home/product_details/' . $key) }}" class="btn btn-success">Details</a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
