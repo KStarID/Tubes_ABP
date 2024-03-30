@@ -40,7 +40,11 @@
         @endif
         </div>
     @endguest
-    @endsection @section('content')
+    @endsection 
+
+
+    
+@section('content')
     <div class="row">
         <div class="col-md-12">
 
@@ -50,12 +54,11 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4>Cars List
-                    </h4>
+                    <h4>Cars List</h4>
                 </div>
                 <div class="card-body">
-
                     <table class="table table-bordered">
+                        <!-- Table Header -->
                         <thead>
                             <tr>
                                 <th>Merk</th>
@@ -72,6 +75,7 @@
                         </thead>
                         <tbody>
                             @forelse($reference as $key => $item)
+                                <!-- Table Row -->
                                 <tr>
                                     <td>{{ $item['merk'] }}</td>
                                     <td>{{ $item['model'] }}</td>
@@ -82,7 +86,7 @@
                                     <td>{{ $item['harga'] }}</td>
                                     <td>{{ $item['deskripsi'] }}</td>
                                     <td>{{ $item['kontak_penjual'] }}</td>
-                                    <td> {{ $item['email_penjual'] }} </td>
+                                    <td>{{ $item['email_penjual'] }}</td>
                                 </tr>
                             @empty
                                 <tr>
@@ -91,11 +95,31 @@
                             @endforelse
                         </tbody>
                     </table>
-
                 </div>
             </div>
-
         </div>
+    </div>
 
+    <!-- Cards Section -->
+    <div class="row mt-4">
+        @forelse($reference as $key => $item)
+            <div class="col-md-4 mb-4">
+                <div class="card glass">
+                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="car!"/></figure>
+                    <div class="card-body">
+                        <h2 class="card-title">{{ $item['merk'] }} {{ $item['model'] }} ({{ $item['tahun_pembuatan'] }})</h2>
+                        <p>Condition : {{ $item['kondisi'] }}</p>
+                        <p>Price     : {{ $item['harga'] }}</p>
+                        <div class="card-actions justify-end">
+                            <a href="{{ url('/home/product_details/' . $key) }}"class="btn btn-sm btn-success">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @empty
+            <div class="col-md-12">
+                <p>No Record Found</p>
+            </div>
+        @endforelse
     </div>
 @endsection
