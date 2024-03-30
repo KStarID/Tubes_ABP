@@ -51,7 +51,7 @@ class CarsController extends Controller
         $email_penjual = auth()->user()->email;
 
         $post_data = [
-            'image' => '#',
+            'image' => 'https://community.gamedev.tv/uploads/db2322/original/3X/9/7/9780f0418136d061a49edef8a94c8d88e1ad1642.jpeg',
             'merk' => $request->merk,
             'model' => $request->model,
             'harga' => $request->harga,
@@ -78,7 +78,7 @@ class CarsController extends Controller
         $key = $id;
         $del_cars = $this->database->getReference($this->tablename . '/' . $key)->remove();
         if ($del_cars) {
-            Session::flash('message', 'Delete Cars Success');
+            Session::flash('delete', 'Delete Cars Success');
             return redirect('/home/cars');
         } else {
             return redirect('/home/cars')->with('status', 'Delete not Success');
@@ -113,7 +113,7 @@ class CarsController extends Controller
         ];
         $res_updated = $this->database->getReference($this->tablename . '/' . $key)->update($update_data);
         if ($res_updated) {
-            Session::flash('message', 'Edit Cars Success');
+            Session::flash('edit', 'Edit Cars Success');
             return redirect('/home/cars')->with('status', 'updated');
         } else {
             return redirect('adminpage.cars')->with('status', 'error');

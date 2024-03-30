@@ -58,11 +58,12 @@
     </script>
 
     <div class="card rounded" id="dummyCarsContent">
-        <div class="card-header">
-            <h5>
-                Edit Cars
-                <a href="{{ route('cars') }}" class="btn btn-sm btn-danger float-end">Back</a>
-            </h5>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-lg font-semibold">Edit Cars
+                    <a href="{{ route('cars') }}" class="btn btn-sm btn-error float-end">Back</a>
+                </h4>
+            </div>
         </div>
         <div class="card-body">
             <!-- New Car Form -->
