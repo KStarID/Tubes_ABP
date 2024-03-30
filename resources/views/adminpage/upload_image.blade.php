@@ -56,30 +56,36 @@
     @endif
 
     <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-lg font-semibold">Upload Image
+                    <a href="{{ route('cars') }}" class="btn btn-sm btn-error float-end">Back</a>
+                </h4>
+            </div>
+        </div>
+        <br>
         <div class="row">
             {{-- Uplode form and picture  --}}
             <div class="col-lg-6">
                 <div class="card shadow rounded">
                     <div class="card-body">
                         <h3 class="text-primary">Upload Image</h3><br>
-                        {!! Form::open([
-                            'action' => 'App\Http\Controllers\Firebase\ImageController@store',
-                            'method' => 'POST',
-                            'files' => true,
-                        ]) !!}
+                        <form action="{{ url('/home/update_image/' . $key) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="image">Upload Picture:</label>
+                                <br>
+                                <input type="file" name="image" class="form-control">
+                            </div>
 
-                        <div class="form-group">
-                            {!! Form::label('image', 'Uplode Picture') !!}
-                            <br>
-                            {!! Form::file('image', null, ['class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::submit('Upload', ['class' => 'btn btn-primary']) !!}
-                        </div>
-
-                        {!! Form::close() !!}
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </div>
+                        </form>
                     </div>
+
                 </div>
             </div>
             {{-- Display uploaded picture --}}
@@ -87,7 +93,7 @@
                 <div class="card shadow rounded">
                     <div class="card-body">
                         <h3 class="text-primary">Uploaded Image</h3><br>
-                        <img id="uploadedImage" src="#" alt="Uploaded Image" class="img-fluid">
+                        <img id="uploadedImage" src="{{ $editdata['image'] }}" alt="Uploaded Image" class="img-fluid">
                     </div>
                 </div>
             </div>
