@@ -25,6 +25,21 @@ class CarsController extends Controller
         return view('adminpage.cars', compact('reference', 'email_penjual'));
     }
 
+    public function show($id)
+    {
+        // Mengambil data mobil dari Firebase berdasarkan ID atau kunci mobil
+        $car = $this->database->getReference($this->tablename . '/' . $id)->getValue();
+
+        // Jika data mobil tidak ditemukan, redirect ke halaman lain atau tampilkan pesan kesalahan
+        if (!$car) {
+            return redirect('/home/cars')->with('status', 'Car not found');
+        }
+
+        // Mengirim data mobil ke view 'product_details.blade.php'
+        return view('product_details', compact('car'));
+    }
+
+
     public function create()
     {
         //
