@@ -66,7 +66,7 @@
 
         @if (Session::has('edit'))
             <p class=" pb-3 alert {{ Session::get('alert-class', 'alert-success') }} alert-dismissible fade show">
-                {{ Session::get('message') }}
+                {{ Session::get('edit') }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -75,7 +75,7 @@
 
         @if (Session::has('photo'))
             <p class=" pb-3 alert {{ Session::get('alert-class', 'alert-warning') }} alert-dismissible fade show">
-                {{ Session::get('message') }}
+                {{ Session::get('photo') }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

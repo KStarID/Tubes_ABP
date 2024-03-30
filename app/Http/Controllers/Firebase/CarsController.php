@@ -22,7 +22,8 @@ class CarsController extends Controller
     public function index()
     {
         $email_penjual = auth()->user()->email;
-        $reference = $this->database->getReference($this->tablename)->getValue();
+        $references = $this->database->getReference($this->tablename)->orderByKey()->getValue();
+        $reference = array_reverse($references, true);
         return view('adminpage.cars', compact('reference', 'email_penjual'));
     }
 
