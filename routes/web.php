@@ -49,6 +49,10 @@ Route::middleware(['auth', 'fireauth'])->group(function () {
     Route::get('/home/image', [App\Http\Controllers\Firebase\ImageController::class, 'index'])->name('image');
     Route::post('/home/image', [App\Http\Controllers\Firebase\ImageController::class, 'store'])->name('store_image');
     Route::get('/home/image/delete', [App\Http\Controllers\Firebase\ImageController::class, 'destroy'])->name('delete_image');
+
+    
+    Route::get('/home/product_details/{id}', [App\Http\Controllers\Firebase\CarsController::class, 'show'])->name('product_details');
+
 });
 
 Route::resource('/password/reset', App\Http\Controllers\Auth\ResetController::class);
