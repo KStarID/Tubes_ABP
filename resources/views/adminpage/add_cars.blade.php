@@ -61,8 +61,8 @@
         <div class="card rounded" id="dummyCarsContent">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="text-lg font-semibold">Add New Cars
-                        <a href="{{ route('cars') }}" class="btn btn-sm btn-error float-end">Back</a>
+                    <h4 class="text-lg font-semibold">Add New Car
+                        <a href="{{ route('cars') }}" class="btn btn-sm btn-ghost float-end">Back</a>
                     </h4>
                 </div>
             </div>
@@ -76,34 +76,38 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('merk', 'Merk:') !!}
-                            {!! Form::text('merk', null, [
-                                'class' => 'form-control',
-                                'required' => 'required',
-                                'placeholder' => 'ex: Toyota',
-                            ]) !!}
+                            <label class="input input-bordered flex items-center gap-2 bg-white">
+                                Merk
+                                {!! Form::text('merk', null, [  
+                                    'required' => 'required',
+                                    'class' => 'grow',
+                                    'placeholder' => 'Toyota',
+                                ]) !!}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="input input-bordered flex items-center gap-2 bg-white">
+                                Model
+                                {!! Form::text('model', null, [
+                                    'required' => 'required',
+                                    'class' => 'grow',
+                                    'placeholder' => 'Avanza',
+                                ]) !!}
+                            </label>
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('model', 'Model:') !!}
-                            {!! Form::text('model', null, [
-                                'class' => 'form-control',
-                                'required' => 'required',
-                                'placeholder' => 'ex: Avanza Veloz',
-                            ]) !!}
+                            <label class="input input-bordered flex items-center gap-2 bg-white">
+                                Tahun Pembuatan
+                                {!! Form::number('tahun_pembuatan', null, [
+                                    'required' => 'required',
+                                    'class' => 'grow',
+                                    'placeholder' => '2020',
+                                ]) !!}
+                            </label>
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('tahun_pembuatan', 'Tahun Pembuatan:') !!}
-                            {!! Form::number('tahun_pembuatan', null, [
-                                'class' => 'form-control',
-                                'required' => 'required',
-                                'placeholder' => 'ex: 2020',
-                            ]) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('kondisi', 'Kondisi:') !!}
                             {!! Form::select('kondisi', ['Baru' => 'Baru', 'Bekas' => 'Bekas'], null, [
                                 'class' => 'form-control',
                                 'required' => 'required',
@@ -112,7 +116,6 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('bahan_bakar', 'Bahan Bakar:') !!}
                             {!! Form::select(
                                 'bahan_bakar',
                                 [
@@ -129,7 +132,6 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('transmisi', 'Transmisi:') !!}
                             {!! Form::select('transmisi', ['Matic' => 'Matic', 'Manual' => 'Manual'], null, [
                                 'class' => 'form-control',
                                 'required' => 'required',
@@ -137,50 +139,57 @@
                             ]) !!}
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::label('warna', 'Warna:') !!}
+                    <div class="form-group">
+                        <label class="input input-bordered flex items-center gap-2 bg-white">
+                            Warna
                             {!! Form::text('warna', null, [
-                                'class' => 'form-control',
                                 'required' => 'required',
-                                'placeholder' => 'ex : Merah',
+                                'class' => 'grow',
+                                'placeholder' => 'Merah',
                             ]) !!}
-                        </div>
+                        </label>
+                    </div>
 
-                        <div class="form-group">
-                            {!! Form::label('harga', 'Harga:') !!}
+                    <div class="form-group">
+                        <label class="input input-bordered flex items-center gap-2 bg-white">
+                            Harga
                             {!! Form::text('harga', null, [
-                                'class' => 'form-control',
                                 'required' => 'required',
-                                'placeholder' => 'ex: 50.000.000',
+                                'class' => 'grow',
+                                'placeholder' => '50.000.000',
                             ]) !!}
-                        </div>
+                        </label>
+                    </div>
 
-                        <div class="form-group">
-                            {!! Form::label('deskripsi', 'Deskripsi Tambahan (Jika tidak, isi "-" saja): ') !!}
+                    <div class="form-group">
+                        <label class="input input-bordered flex items-center gap-2 bg-white">
+                            Deskripsi (Jika tidak, isi "-") 
                             {!! Form::text('deskripsi', null, [
-                                'class' => 'form-control',
                                 'required' => 'required',
-                                'placeholder' => 'ex: km 10.000 dan warna sedikit luntur',
+                                'class' => 'grow',
+                                'placeholder' => 'km 10.000, pajak hidup, service rutin',
                             ]) !!}
-                        </div>
+                        </label>
+                    </div>
 
-                        <div class="form-group">
-                            {!! Form::label('kontak_penjual', 'Kontak Penjual (WA):') !!}
+                    <div class="form-group">
+                        <label class="input input-bordered flex items-center gap-2 bg-white">
+                            Kontak Penjual (WA)
                             {!! Form::text('kontak_penjual', null, [
-                                'class' => 'form-control',
                                 'required' => 'required',
-                                'placeholder' => 'ex : 08xxxxxxx',
+                                'class' => 'grow',
+                                'placeholder' => '08xxxxxxx',
                             ]) !!}
-                        </div>
+                        </label>
                     </div>
                 </div>
 
                 <div class="form-group text-center">
-                    {!! Form::submit('Add Cars', ['class' => 'btn btn-primary btn-lg', 'onclick' => 'return confirmSubmission()']) !!}
+                    {!! Form::submit('Add Cars', ['class' => 'btn btn-accent btn-wide', 'onclick' => 'return confirmSubmission()']) !!}
                 </div>
 
                 <div class="form-group text-center">
-                    <button type="reset" class="btn btn-secondary btn-lg">Reset</button>
+                    <button type="reset" class="btn btn-sm btn-outline btn-error ">Reset</button>
                 </div>
 
                 {!! Form::close() !!}
