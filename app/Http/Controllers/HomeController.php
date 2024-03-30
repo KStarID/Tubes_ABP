@@ -43,7 +43,8 @@ class HomeController extends Controller
 
       $usersArray = iterator_to_array($users);
       $totalUsers = count($usersArray);
-      $reference = $this->database->getReference($this->tablename)->getValue();
+      $references = $this->database->getReference($this->tablename)->orderByKey()->getValue();
+      $reference = array_reverse($references, true);
       $reference1 = $this->database->getReference($this->tablename1)->getValue();
 
       return view('home', compact('user', 'totalUsers', 'reference', 'reference1'));
