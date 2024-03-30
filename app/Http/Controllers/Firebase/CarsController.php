@@ -7,15 +7,16 @@ use Illuminate\Http\Request;
 use Kreait\Firebase\Contract\Database;
 use Session;
 use Kreait\Firebase\Exception\FirebaseException;
-
+use Kreait\Firebase\Contract\Storage;
 
 
 class CarsController extends Controller
 {
-    public function __construct(Database $database)
+    public function __construct(Database $database, Storage $storage)
     {
         $this->database = $database;
         $this->tablename = 'cars';
+        $this->storage = $storage;
     }
 
     public function index()
@@ -35,6 +36,7 @@ class CarsController extends Controller
         $email_penjual = auth()->user()->email;
 
         $post_data = [
+            'image' => '#',
             'merk' => $request->merk,
             'model' => $request->model,
             'harga' => $request->harga,
@@ -52,7 +54,7 @@ class CarsController extends Controller
             Session::flash('message', 'Add Cars Success');
             return redirect('/home/cars')->with('status', 'Success');
         } else {
-            return redirect('/home/admin')->with('status', 'error');
+            return redirect('/home/cars')->with('status', 'error');
         }
     }
 
@@ -64,7 +66,7 @@ class CarsController extends Controller
             Session::flash('message', 'Delete Cars Success');
             return redirect('/home/cars');
         } else {
-            return redirect('/home/admin')->with('status', 'Delete not Success');
+            return redirect('/home/cars')->with('status', 'Delete not Success');
         }
     }
 
@@ -101,5 +103,52 @@ class CarsController extends Controller
         } else {
             return redirect('adminpage.cars')->with('status', 'error');
         }
+    }
+
+    public function storeimage(Request $request, $id)
+    {
+        // Validasi request untuk memastikan file gambar telah disertakan
+        $request->validate([
+            'image' => 'required|image',
+        ]);
+
+        $key = $id;
+
+        // Ambil file gambar dari request
+        $image = $request->file('image');
+
+        // Path penyimpanan di Firebase Storage
+        $storagePath = 'Images/';
+
+        // Generate nama file unik
+        $fileName = uniqid() . '.' . $image->getClientOriginalExtension();
+
+        // Simpan file gambar ke Firebase Storage
+        $this->storage->getBucket()->upload(
+            file_get_contents($image->getRealPath()),
+            [
+                'name' => $storagePath . $fileName,
+            ]
+        );
+
+        $signedUrl = $this->storage->getBucket()->object($storagePath . $fileName)->signedUrl(new \DateTime('+5 minutes'));
+
+        $post_data = [
+            'image' => $signedUrl
+        ];
+
+        $res_updated = $this->database->getReference($this->tablename . '/' . $key)->update($update_data);
+        if ($res_updated) {
+            Session::flash('message', 'New Cars Created');
+            return back()->withInput()->with('status', 'Success');
+        } else {
+            return redirect('/home')->with('status', 'error');
+        }
+
+        // Tambahkan pesan sukses ke sesi
+        Session::flash('message', 'Successfully Uploaded');
+
+        // Redirect kembali ke halaman sebelumnya
+        return back();
     }
 }

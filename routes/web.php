@@ -46,7 +46,7 @@ Route::middleware(['auth', 'fireauth'])->group(function () {
     Route::get('/home/cars/edit_cars/{id}', [App\Http\Controllers\Firebase\CarsController::class, 'edit_cars'])->name('edit_cars');
     Route::put('/home/cars/update_cars/{id}', [App\Http\Controllers\Firebase\CarsController::class, 'update_cars'])->name('update_cars');
 
-    Route::get('/home/image', [App\Http\Controllers\Firebase\ImageController::class, 'index'])->name('image');
+    Route::get('/home/image', [App\Http\Controllers\Firebase\ImageController::class, 'index'])->name('upload_image');
     Route::post('/home/image', [App\Http\Controllers\Firebase\ImageController::class, 'store'])->name('store_image');
     Route::get('/home/image/delete', [App\Http\Controllers\Firebase\ImageController::class, 'destroy'])->name('delete_image');
 });
