@@ -74,6 +74,7 @@
         </div>
 
         <!-- Cards Section -->
+
         <div class="row mt-4">
             @forelse($reference as $key => $item)
                 <div class="col-md-4 mb-4">
@@ -83,12 +84,16 @@
                         </figure>
                         <div class="card-body">
                             <h2 class="text-xl font-semibold">{{ $item['merk'] }} {{ $item['model'] }}
-                                ({{ $item['tahun_pembuatan'] }})
+                                ({{ $item['tahun_pembuatan'] }}) 
+                                @if($item['kondisi'] == 'Baru')
+                                    <div class="badge badge-secondary">NEW</div>
+                                @else
+                                    <div class="badge badge-accent">USED</div>
+                                @endif
                             </h2>
-                            <p class="text-sm text-black">Kondisi : {{ $item['kondisi'] }}</p>
                             <p class="text-sm text-black">Harga : Rp. {{ $item['harga'] }}</p>
                             <div class="flex justify-end mt-1">
-                                <a href="{{ url('/home/product_details/' . $key) }}" class="btn btn-success">Details</a>
+                                <a href="{{ url('/home/product_details/' . $key) }}" class="btn btn-sm btn-ghost">Details</a>
                             </div>
                             
                         </div>

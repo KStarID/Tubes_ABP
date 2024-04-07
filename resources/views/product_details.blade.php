@@ -34,6 +34,30 @@
     @endguest
 @endsection
 
+<!-- zoom  -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var image = document.getElementById('uploadedImage');
+        var cardBody = image.closest('.card-body');
+
+        image.addEventListener('mousemove', function (e) {
+            var rect = cardBody.getBoundingClientRect();
+            var scale = 1.5; // Adjust the zoom level as needed
+            var offsetX = (e.clientX - rect.left) / rect.width;
+            var offsetY = (e.clientY - rect.top) / rect.height;
+
+            image.style.transformOrigin = (offsetX * 100) + '% ' + (offsetY * 100) + '%';
+            image.style.transform = 'scale(' + scale + ')';
+        });
+
+        image.addEventListener('mouseleave', function () {
+            image.style.transformOrigin = 'center';
+            image.style.transform = 'scale(1)';
+        });
+    });
+</script>
+
+
 
 
 @section('content')
@@ -41,18 +65,24 @@
         <h4 class="alert alert-warning mb-2"> {{ session('status') }} </h4>
     @endif
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
                 <div class="card shadow rounded">
-                    <div class="card-body">
+                    <div class="card-body overflow-hidden">
                         <img id="uploadedImage" src="{{ $car['image'] }}" alt="Uploaded Image" class="img-fluid">
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+
+
+            <div class="col-lg-7">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Car Details</h4>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 text-center">
+                                <h4><strong>Car Details</strong></h4>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -73,7 +103,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <a href="{{ route('home') }}" class="btn btn-accent">Back</a>
+                        <a href="{{ route('home') }}" class="btn btn-sm btn-ghost">Back</a>
                     </div>
                 </div>
             </div>
