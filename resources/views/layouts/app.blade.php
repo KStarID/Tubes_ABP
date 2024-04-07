@@ -31,6 +31,8 @@
     <!-- ini daisyUI tailwindcss -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    
+
 
 </head>
 
@@ -50,7 +52,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -103,11 +105,14 @@
             @yield('content')
         </main>
     </div>
-    <footer id="sticky-footer" class="flex-shrink-0 py-4 text-dark-50">
-        <div class="container text-center">
-            <small>Made with ❤️ by <a href="" style="text-decoration: none;">BaroCars Team</a></small>
-        </div>
+    
+    <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+        <aside class="items-center grid-flow-col">
+            <p>© 2024 - All right reserved by BaroCars Team ❤️</p> 
+        </aside> 
     </footer>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
