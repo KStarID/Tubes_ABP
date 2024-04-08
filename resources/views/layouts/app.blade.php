@@ -32,12 +32,16 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
 </head>
 
-<body style="min-height:90vh;">
-    <div id="app">
+<!-- <body style="min-height:90vh;">
+    <div id="app"> -->
+<body class="flex flex-col min-h-screen">
+    <div id="app" class="flex-grow">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -60,42 +64,6 @@
                         <!-- Authentication Links -->
                         @yield('navbar_welcome')
                         @yield('navbar_home')
-                        {{-- @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                        
-                          @if ($user->customClaims['admin'])
-                              <li class="nav-item">
-                              <a class="nav-link text-dark" href="/home/admin">{{ __('Admin') }}</a>
-                              </li>
-                          @endif
-                          <li class="nav-item">
-                              <a class="nav-link text-dark" href="home/profile">{{ __('Profile') }}</a>
-                          </li>
-
-                          <li class="nav-item">
-                            <a class="nav-link text-dark" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                              </li>
-                            </div>
-                          </li>
-                        @endguest --}}
                     </ul>
                 </div>
             </div>
@@ -112,10 +80,7 @@
         </aside> 
     </footer>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
 </body>
+
 
 </html>
