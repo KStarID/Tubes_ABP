@@ -65,8 +65,8 @@
         <h4 class="alert alert-warning mb-2"> {{ session('status') }} </h4>
     @endif
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
+        <div class="row justify-content-center ">
+            <div class="col-lg-8 mb-2">
                 <div class="card shadow rounded">
                     <div class="card-body overflow-hidden">
                         <img id="uploadedImage" src="{{ $car['image'] }}" alt="Uploaded Image" class="img-fluid">
@@ -75,7 +75,7 @@
             </div>
 
 
-            <div class="col-lg-7">
+            <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header">
                         <div class="row justify-content-center">
@@ -87,18 +87,21 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <p><strong>Merk:</strong> {{ $car['merk'] }}</p>
-                                <p><strong>Model:</strong> {{ $car['model'] }}</p>
-                                <p><strong>Tahun Pembuatan:</strong> {{ $car['tahun_pembuatan'] }}</p>
-                                <p><strong>Kondisi:</strong> {{ $car['kondisi'] }}</p>
-                                <p><strong>Bahan Bakar:</strong> {{ $car['bahan_bakar'] }}</p>
+                                <p><strong>Merk:</strong></br> {{ ucwords($car['merk']) }}</p>
+                                <p><strong>Model:</strong></br> {{ $car['model'] }}</p>
+                                <p><strong>Tahun Pembuatan:</strong></br> {{ $car['tahun_pembuatan'] }}</p>
+                                <p><strong>Kondisi:</strong></br> {{ $car['kondisi'] }}</p>
+                                <p><strong>Bahan Bakar:</strong></br> {{ $car['bahan_bakar'] }}</p>
                             </div>
                             <div class="col-md-6">
-                                <p><strong>Transmisi:</strong> {{ $car['transmisi'] }}</p>
-                                <p><strong>Warna:</strong> {{ $car['warna'] }}</p>
-                                <p><strong>Harga:</strong> {{ $car['harga'] }}</p>
-                                <p><strong>Deskripsi:</strong> {{ $car['deskripsi'] }}</p>
-                                <p><strong>Kontak Penjual:</strong> {{ $car['kontak_penjual'] }}</p>
+                                <p><strong>Transmisi:</strong></br> {{ $car['transmisi'] }}</p>
+                                <p><strong>Warna:</strong></br> {{ $car['warna'] }}</p>
+                                <p><strong>Harga:</strong></br> Rp. {{ $car['harga'] }}</p>
+                                <p><strong>Deskripsi:</strong></br> {{ $car['deskripsi'] }}</p>
+                                <p><strong>Kontak Penjual:</strong></br> {{ $car['kontak_penjual'] }}</p>
+                                @if (isset($car['upload_timestamp']))
+                                    <p><strong>Waktu Unggah:</strong><br> {{ date('d-m-Y', strtotime($car['upload_timestamp'])) }} </p>
+                                @endif
                             </div>
                         </div>
                     </div>
