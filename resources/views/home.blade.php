@@ -76,7 +76,7 @@
         <!-- Cards Section -->
 
         <div class="row mt-4">
-            @forelse($reference as $key => $item)
+            @forelse($pagedPaginator->items() as $key => $item)
                 <div class="col-md-4 mb-4">
                     <div class="card-2 bg-white shadow-lg rounded-lg overflow-hidden">
                         <figure>
@@ -106,5 +106,31 @@
             @endforelse
 
         </div>
+        <!-- pagination nih -->
+        <div class="join col-md-12 justify-center">
+            {{-- Previous Page Link --}}
+            @if ($pagedPaginator->onFirstPage())
+                <button class="join-item btn">&laquo;</button>
+            @else
+                <button class="join-item btn" onclick="window.location='{{ $pagedPaginator->previousPageUrl() }}'">&laquo;</button>
+            @endif
+
+            {{-- Pagination Elements --}}
+            @foreach ($pagedPaginator->getUrlRange(1, $pagedPaginator->lastPage()) as $page => $url)
+                @if ($page == $pagedPaginator->currentPage())
+                    <button class="join-item btn btn-active">{{ $page }}</button>
+                @else
+                    <button class="join-item btn" onclick="window.location='{{ $url }}'">{{ $page }}</button>
+                @endif
+            @endforeach
+
+            {{-- Next Page Link --}}
+            @if ($pagedPaginator->hasMorePages())
+                <button class="join-item btn" onclick="window.location='{{ $pagedPaginator->nextPageUrl() }}'">&raquo;</button>
+            @else
+                <button class="join-item btn">&raquo;</button>
+            @endif
+        </div>
+
     </div>
 @endsection
