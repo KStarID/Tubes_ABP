@@ -83,7 +83,7 @@
                             <img src="{{ $item['image'] }}" alt="car!" class="object-cover w-full h-56">
                         </figure>
                         <div class="card-body">
-                            <h2 class="text-xl font-semibold">{{ $item['merk'] }} {{ $item['model'] }}
+                            <h2 class="text-xl font-semibold">{{ ucwords($item['merk']) }} {{ $item['model'] }}
                                 ({{ $item['tahun_pembuatan'] }}) 
                                 @if($item['kondisi'] == 'Baru')
                                     <div class="badge badge-secondary">NEW</div>
