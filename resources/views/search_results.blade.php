@@ -37,7 +37,11 @@
 
 @section('content')
     <div class="container">
-        <h1>Search Results for "{{ $query }}"</h1>
+        <h1>Search Results for "{{ $query }}"
+            @if ('{{ $filter }}')
+                and "{{ $filter }}"
+            @endif
+        </h1>
         <div><br></div>
         <div class="row">
             @forelse($pagedPaginator->items() as $key => $item)

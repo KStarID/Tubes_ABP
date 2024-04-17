@@ -114,6 +114,6 @@ class HomeController extends Controller
       ['path' => LengthAwarePaginator::resolveCurrentPath()]
     );
 
-    return view('search_results', compact('pagedPaginator', 'query'));
+    return view('search_results', compact('pagedPaginator', 'query', 'filter'));
   }
 }

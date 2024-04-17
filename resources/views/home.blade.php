@@ -75,8 +75,8 @@
 
                         <select name="filter" class="select select-bordered join-item bg-white rounded-md">
                             <option disabled selected>Filter</option>
-                            <option value="Baru">USED</option>
-                            <option value="Bekas">NEW</option>
+                            <option value="Bekas">USED</option>
+                            <option value="Baru">NEW</option>
                         </select>
 
                         <div class="indicator">
