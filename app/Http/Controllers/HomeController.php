@@ -10,7 +10,7 @@ use Kreait\Firebase\Exception\FirebaseException;
 use Carbon\Carbon;
 use Kreait\Firebase\Contract\Database;
 use Illuminate\Pagination\LengthAwarePaginator;
-
+use Illuminate\Support\Collection;
 
 use Session;
 
@@ -55,9 +55,9 @@ class HomeController extends Controller
 
       // Memastikan bahwa reference memiliki data sebelum dilakukan pagination
       if (!empty($reference)) {
-          $pagedData = array_slice($reference, ($currentPage - 1) * $perPage, $perPage);
+        $pagedData = array_slice($reference, ($currentPage - 1) * $perPage, $perPage);
       } else {
-          $pagedData = [];
+        $pagedData = [];
       }
 
       // Transform array menjadi koleksi Illuminate\Support\Collection
@@ -65,17 +65,55 @@ class HomeController extends Controller
 
       // Membuat instance dari LengthAwarePaginator
       $pagedPaginator = new LengthAwarePaginator(
-          $pagedCollection,
-          count($reference),
-          $perPage,
-          $currentPage,
-          ['path' => LengthAwarePaginator::resolveCurrentPath()]
+        $pagedCollection,
+        count($reference),
+        $perPage,
+        $currentPage,
+        ['path' => LengthAwarePaginator::resolveCurrentPath()]
       );
 
 
-      return view('home', compact('user', 'totalUsers', 'pagedPaginator','reference', 'reference1'));
+      return view('home', compact('user', 'totalUsers', 'pagedPaginator', 'reference', 'reference1'));
     } catch (\Exception $e) {
       return $e->getmessage();
     }
+  }
+
+  public function search(Request $request)
+  {
+    $query = $request->input('query');
+    $filter = $request->input('filter'); // Ambil nilai filter dari query string
+
+    // Query untuk mencari mobil berdasarkan kata kunci dan filter
+    $references = $this->database->getReference($this->tablename)
+      ->orderByChild('merk')
+      ->startAt($query)
+      ->endAt($query . "\uf8ff")
+      ->getValue();
+
+    // Filter hasil pencarian berdasarkan kondisi
+    if ($filter) {
+      $references = array_filter($references, function ($item) use ($filter) {
+        return $item['kondisi'] == $filter;
+      });
+    }
+
+    // Transformasikan referensi menjadi array
+    $cars = array_values($references);
+
+    // Mengatur pagination
+    $perPage = 9;
+    $currentPage = request()->input('page') ?? 1;
+
+    // Membuat instance dari LengthAwarePaginator
+    $pagedPaginator = new LengthAwarePaginator(
+      $cars,
+      count($cars),
+      $perPage,
+      $currentPage,
+      ['path' => LengthAwarePaginator::resolveCurrentPath()]
+    );
+
+    return view('search_results', compact('pagedPaginator', 'query'));
   }
 }
