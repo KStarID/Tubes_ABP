@@ -23,7 +23,6 @@ class HomeController extends Controller
    */
   public function __construct(Database $database)
   {
-    $this->middleware('auth');
     $this->database = $database;
     $this->tablename = 'cars';
     $this->tablename1 = 'image';
@@ -40,11 +39,15 @@ class HomeController extends Controller
     try {
 
       $uid = Session::get('uid');
-      $user = app('firebase.auth')->getUser($uid);
-      $users = app('firebase.auth')->listUsers($defaultMaxResults = 1000, $defaultBatchSize = 1000);
+      if ($uid === null) {
+        $user = 'guest';
+      } else {
+        $user = app('firebase.auth')->getUser($uid);
+        $users = app('firebase.auth')->listUsers($defaultMaxResults = 1000, $defaultBatchSize = 1000);
 
-      $usersArray = iterator_to_array($users);
-      $totalUsers = count($usersArray);
+        $usersArray = iterator_to_array($users);
+        $totalUsers = count($usersArray);
+      }
       $references = $this->database->getReference($this->tablename)->orderByKey()->getValue();
       $reference = array_reverse($references, true);
       $reference1 = $this->database->getReference($this->tablename1)->getValue();
@@ -73,7 +76,7 @@ class HomeController extends Controller
       );
 
 
-      return view('home', compact('user', 'totalUsers', 'pagedPaginator', 'reference', 'reference1'));
+      return view('home', compact('user', 'pagedPaginator', 'reference', 'reference1'));
     } catch (\Exception $e) {
       return $e->getmessage();
     }
@@ -82,38 +85,39 @@ class HomeController extends Controller
   public function search(Request $request)
   {
     $query = $request->input('query');
-    $filter = $request->input('filter'); // Ambil nilai filter dari query string
+    $filter = $request->input('filter');
 
-    // Query untuk mencari mobil berdasarkan kata kunci dan filter
-    $references = $this->database->getReference($this->tablename)
-      ->orderByChild('merk')
-      ->startAt($query)
-      ->endAt($query . "\uf8ff")
-      ->getValue();
+    // Cek apakah query tidak kosong
+    if (!empty($query)) {
+      // Lakukan pencarian hanya jika query tidak kosong
+      $references = $this->database->getReference($this->tablename)
+        ->orderByChild('merk')
+        ->startAt($query)
+        ->endAt($query . "\uf8ff")
+        ->getValue();
 
-    // Filter hasil pencarian berdasarkan kondisi
-    if ($filter) {
-      $references = array_filter($references, function ($item) use ($filter) {
-        return $item['kondisi'] == $filter;
-      });
+      // Filter hasil pencarian berdasarkan kondisi jika filter tersedia
+      if ($filter) {
+        $references = array_filter($references, function ($item) use ($filter) {
+          return $item['kondisi'] == $filter;
+        });
+      }
+
+      // Mengatur pagination dan menampilkan hasil pencarian
+      $perPage = 9;
+      $currentPage = request()->input('page') ?? 1;
+      $pagedPaginator = new LengthAwarePaginator(
+        $references,
+        count($references),
+        $perPage,
+        $currentPage,
+        ['path' => LengthAwarePaginator::resolveCurrentPath()]
+      );
+
+      return view('search_results', compact('pagedPaginator', 'query', 'filter'));
+    } else {
+      // Jika query kosong, kembalikan ke halaman sebelumnya atau lakukan penanganan sesuai kebutuhan Anda
+      return back()->with('status', 'Please enter a search query.');
     }
-
-    // Transformasikan referensi menjadi array
-    $cars = array_values($references);
-
-    // Mengatur pagination
-    $perPage = 9;
-    $currentPage = request()->input('page') ?? 1;
-
-    // Membuat instance dari LengthAwarePaginator
-    $pagedPaginator = new LengthAwarePaginator(
-      $cars,
-      count($cars),
-      $perPage,
-      $currentPage,
-      ['path' => LengthAwarePaginator::resolveCurrentPath()]
-    );
-
-    return view('search_results', compact('pagedPaginator', 'query', 'filter'));
   }
 }
