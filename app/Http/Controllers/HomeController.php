@@ -84,17 +84,21 @@ class HomeController extends Controller
 
   public function search(Request $request)
   {
-    $query = $request->input('query');
-    $filter = $request->input('filter');
+      $query = $request->input('query');
+      $filter = $request->input('filter');
 
-    // Cek apakah query tidak kosong
-    if (!empty($query)) {
-      // Lakukan pencarian hanya jika query tidak kosong
-      $references = $this->database->getReference($this->tablename)
-        ->orderByChild('merk')
-        ->startAt($query)
-        ->endAt($query . "\uf8ff")
-        ->getValue();
+      // jadiin lowercase
+      $query = strtolower($query);
+
+      if (!empty($query)) {
+          $allReferences = $this->database->getReference($this->tablename)
+                              ->orderByChild('merk')
+                              ->getValue();
+
+      // nyari yang merknya mengandung kata kunci, nggak peduli huruf besar atau kecil
+      $references = array_filter($allReferences, function ($item) use ($query) {
+          return strpos(strtolower($item['merk']), $query) !== false;
+      });
 
       // Filter hasil pencarian berdasarkan kondisi jika filter tersedia
       if ($filter) {
