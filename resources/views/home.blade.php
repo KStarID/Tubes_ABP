@@ -89,7 +89,11 @@
                 <div class="card-1">
                     <div class="card-header">
                         <h4 class="text-lg font-semibold" style="margin-left: 3rem; margin-right: 3rem;">Cars List
-                            <p class="float-end">Hello, {{ $user->displayName }}</p>
+                            @guest
+                                <p class="float-end">Hello, Guest</p>
+                            @else
+                                <p class="float-end">Hello, {{ $user->displayName }}</p>
+                            @endguest
                         </h4>
                     </div>
                 </div>

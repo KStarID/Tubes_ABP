@@ -35,14 +35,24 @@
     @endguest
 @endsection
 
+<style>
+    .card-2 {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card-2:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
+    }
+</style>
+
 @section('content')
     <div class="container">
-        <h1>Search Results for "{{ $query }}"
-            @if ('{{ $filter }}')
+        <h1 class="mb-4">Search Results for "{{ $query }}"
+            @if ($filter)
                 and "{{ $filter }}"
             @endif
         </h1>
-        <div><br></div>
         <div class="row">
             @forelse($pagedPaginator->items() as $key => $item)
                 <div class="col-md-4 mb-4">
