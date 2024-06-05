@@ -18,6 +18,10 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link text-dark" href="{{ url('/home/news') }}">News</a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link text-dark" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
       document.getElementById('logout-form').submit();">

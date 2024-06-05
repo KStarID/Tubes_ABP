@@ -25,7 +25,7 @@ class HomeController extends Controller
   {
     $this->database = $database;
     $this->tablename = 'cars';
-    $this->tablename1 = 'image';
+    $this->tablename2 = 'news';
   }
 
   /**
@@ -50,7 +50,6 @@ class HomeController extends Controller
       }
       $references = $this->database->getReference($this->tablename)->orderByKey()->getValue();
       $reference = array_reverse($references, true);
-      $reference1 = $this->database->getReference($this->tablename1)->getValue();
 
       // Mengatur pagination
       $perPage = 9;
@@ -76,7 +75,7 @@ class HomeController extends Controller
       );
 
 
-      return view('home', compact('user', 'pagedPaginator', 'reference', 'reference1'));
+      return view('home', compact('user', 'pagedPaginator', 'reference'));
     } catch (\Exception $e) {
       return $e->getmessage();
     }
@@ -122,6 +121,54 @@ class HomeController extends Controller
     } else {
       // Jika query kosong, kembalikan ke halaman sebelumnya atau lakukan penanganan sesuai kebutuhan Anda
       return back()->with('status', 'Please enter a search query.');
+    }
+  }
+
+  public function news()
+  {
+    // FirebaseAuth.getInstance().getCurrentUser();
+    try {
+
+      $uid = Session::get('uid');
+      if ($uid === null) {
+        $user = 'guest';
+      } else {
+        $user = app('firebase.auth')->getUser($uid);
+        $users = app('firebase.auth')->listUsers($defaultMaxResults = 1000, $defaultBatchSize = 1000);
+
+        $usersArray = iterator_to_array($users);
+        $totalUsers = count($usersArray);
+      }
+      $referencesnews = $this->database->getReference($this->tablename2)->orderByKey()->getValue();
+      $referencenews = array_reverse($referencesnews, true);
+
+      // Mengatur pagination
+      $perPage = 9;
+      $currentPage = request()->input('page') ?? 1;
+
+      // Memastikan bahwa reference memiliki data sebelum dilakukan pagination
+      if (!empty($referencenews)) {
+        $pagedData = array_slice($referencenews, ($currentPage - 1) * $perPage, $perPage);
+      } else {
+        $pagedData = [];
+      }
+
+      // Transform array menjadi koleksi Illuminate\Support\Collection
+      $pagedCollection = collect($pagedData);
+
+      // Membuat instance dari LengthAwarePaginator
+      $pagedPaginator = new LengthAwarePaginator(
+        $pagedCollection,
+        count($referencenews),
+        $perPage,
+        $currentPage,
+        ['path' => LengthAwarePaginator::resolveCurrentPath()]
+      );
+
+
+      return view('news', compact('user', 'pagedPaginator', 'referencenews'));
+    } catch (\Exception $e) {
+      return $e->getmessage();
     }
   }
 }

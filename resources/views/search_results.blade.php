@@ -6,6 +6,10 @@
             <a class="nav-link text-dark" href="{{ url('/home') }}">Home</a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="{{ url('/home/news') }}">News</a>
+        </li>
+
         @if (Route::has('login'))
             <li class="nav-item">
                 <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -20,6 +24,10 @@
     @else
         <li class="nav-item">
             <a class="nav-link text-dark" href="{{ url('/home') }}">Home</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="{{ url('/home/news') }}">News</a>
         </li>
 
         <li class="nav-item">

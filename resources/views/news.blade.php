@@ -6,10 +6,6 @@
             <a class="nav-link text-dark" href="{{ url('/home') }}">Home</a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="{{ url('/home/news') }}">News</a>
-        </li>
-
         @if (Route::has('login'))
             <li class="nav-item">
                 <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -23,9 +19,8 @@
         @endif
     @else
         <li class="nav-item">
-            <a class="nav-link text-dark" href="{{ url('/news') }}">News</a>
+            <a class="nav-link text-dark" href="{{ url('/home') }}">Home</a>
         </li>
-
         @if ($user->customClaims['admin'] == false)
             <li class="nav-item">
                 <a class="nav-link text-dark" href="/home/iamadmin">Become Seller</a>
@@ -78,28 +73,6 @@
                         {{ session('status') }}
                     </div>
                 @endif
-
-                <form action="{{ route('search') }}" method="GET" class="mb-4"
-                    style="display: flex; justify-content: center; align-items: center; text-align: center;">
-                    <div class="join">
-
-                        <div>
-                            <input type="text" name="query" class="input input-bordered join-item bg-white rounded-md"
-                                placeholder="Search" />
-                        </div>
-
-                        <select name="filter" class="select select-bordered join-item bg-white rounded-md">
-                            <option disabled selected>Filter</option>
-                            <option value="Bekas">USED</option>
-                            <option value="Baru">NEW</option>
-                        </select>
-
-                        <div class="indicator">
-                            <button class="btn btn-outline-info" type="submit">Search</button>
-                        </div>
-
-                    </div>
-                </form>
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -160,18 +133,13 @@
                             <img src="{{ $item['image'] }}" alt="car!" class="object-cover w-full h-56">
                         </figure>
                         <div class="card-body">
-                            <h2 class="text-xl font-semibold">{{ ucwords($item['merk']) }} {{ $item['model'] }}
-                                ({{ $item['tahun_pembuatan'] }})
-                                @if ($item['kondisi'] == 'Baru')
-                                    <span class="badge badge-pill badge-danger">NEW</span>
-                                @else
-                                    <span class="badge badge-pill badge-info">USED</span>
-                                @endif
+                            <h2 class="text-xl font-semibold">{{ ucwords($item['judul']) }}
                             </h2>
-                            <p class="text-sm text-black">Price : Rp. {{ $item['harga'] }}</p>
+                            <span class="badge badge-pill badge-danger">
+                                <p>{{ date('d-m-Y', strtotime($item['tanggal'])) }} </p>
+                            </span>
                             <div class="flex justify-end mt-1">
-                                <a href="{{ url('/home/product_details/' . $key) }}"
-                                    class="btn btn-sm btn-danger">Details</a>
+                                <a href="{{ url('/home/news_details/' . $key) }}" class="btn btn-danger">Read Now</a>
                             </div>
                         </div>
                     </div>
