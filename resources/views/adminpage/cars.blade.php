@@ -19,6 +19,10 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link text-dark" href="{{ url('/news') }}">News</a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link text-dark" href="/home/profile">{{ __('Profile') }}</a>
         </li>
 
@@ -104,11 +108,13 @@
 
         <div class="row">
             <div class="col-md-3 col-sm-12 p-3">
-                <div class="list-group">
+                <div class="list-group d-flex flex-row">
                     <a href="/home/admin" class="list-group-item list-group-item-action mb-3 border"
                         id="dashboardLink">Dashboard</a>
                     <a href="{{ route('cars') }}" class="list-group-item list-group-item-action mb-3 border active"
                         id="CarsLink">Cars</a>
+                    <a href="{{ route('news_admin') }}" class="list-group-item list-group-item-action mb-3 border"
+                        id="CarsLink">News</a>
                 </div>
             </div>
 
