@@ -8,7 +8,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ url('/home/news') }}">News</a>
+                <a class="nav-link text-dark" href="{{ url('/news') }}">News</a>
             </li>
         @else
             <li class="nav-item">
@@ -16,7 +16,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ url('/home/news') }}">News</a>
+                <a class="nav-link text-dark" href="{{ url('/news') }}">News</a>
             </li>
 
             <li class="nav-item">
@@ -45,20 +45,18 @@
 
     <div class="container mx-auto my-8">
         <div class="card">
-            <div class="card-header">{{ __('Welcome') }}</div>
+            <div class="card-header text-center">{{ __('Welcome') }}</div>
 
             <div class="card-body">
                 <div class="container text-center mt-5">
                     <h1 class="text-5xl font-bold mb-5">Welcome to <a href="https://barocars.up.railway.app/"
-                            class="text-primary hover:text-secondary">BaroCars Web</a>
-                        <span>&#127881;</span>
+                            class="text-primary hover:text-secondary">BaroCars Web</a> <span>&#127881;</span>
                     </h1>
                     <div>
                         <img src="{{ asset('admin_assets/img/image1.jpg') }}">
                     </div>
-                    <p class="text-lg leading-relaxed my-5">We've seamlessly integrated Firebase into our platform,
-                        enabling powerful
-                        features like <span class="text-danger">Realtime Database</span>, <span
+                    <p class="leading-relaxed my-5">We've seamlessly integrated Firebase into our platform,
+                        enabling powerful features like <span class="text-danger">Realtime Database</span>, <span
                             class="text-danger">Authentication</span>, <span class="text-danger">Email
                             Verification</span>, and an <span class="text-danger">Admin Panel</span>. With Firebase,
                         we ensure real-time data updates, secure user authentication, and efficient administration.
