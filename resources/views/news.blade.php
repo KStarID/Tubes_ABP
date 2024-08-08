@@ -74,44 +74,52 @@
                     </div>
                 @endif
 
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{ asset('admin_assets/img/1.png') }}" alt="First slide">
+                <section class="section hero" id="home">
+                    <div class="container">
+
+                        <div class="hero-content">
+                            <h2 class="h1 hero-title">The easy way to takeover a lease</h2>
+
+                            <p class="hero-text">
+                                Live in New York, New Jerset and Connecticut!
+                            </p>
                         </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('admin_assets/img/2.png') }}" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('admin_assets/img/3.png') }}" alt="Third slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('admin_assets/img/4.png') }}" alt="Fourth slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('admin_assets/img/5.png') }}" alt="Fifth slide">
-                        </div>
+
+                        <div class="hero-banner"></div>
+
+                        <form action="" class="hero-form">
+
+                            <div class="input-wrapper">
+                                <label for="input-1" class="input-label">Car, model, or brand</label>
+
+                                <input type="text" name="car-model" id="input-1" class="input-field"
+                                    placeholder="What car are you looking?">
+                            </div>
+
+                            <div class="input-wrapper">
+                                <label for="input-2" class="input-label">Max. monthly payment</label>
+
+                                <input type="text" name="monthly-pay" id="input-2" class="input-field"
+                                    placeholder="Add an amount in $">
+                            </div>
+
+                            <div class="input-wrapper">
+                                <label for="input-3" class="input-label">Make Year</label>
+
+                                <input type="text" name="year" id="input-3" class="input-field"
+                                    placeholder="Add a minimal make year">
+                            </div>
+
+                            <button type="submit" class="btn">Search</button>
+
+                        </form>
+
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
+                </section>
 
                 <div class="card-1 mt-4">
                     <div class="card-header">
-                        <h4 class="text-lg font-semibold" style="margin-left: 3rem; margin-right: 3rem;">Cars List
+                        <h4 class="text-lg font-semibold" style="margin-left: 3rem; margin-right: 3rem;">News List
                             @guest
                                 <p class="float-end">Hello, Guest</p>
                             @else

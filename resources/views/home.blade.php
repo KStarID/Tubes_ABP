@@ -7,7 +7,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-dark" href="{{ url('/home/news') }}">News</a>
+            <a class="nav-link text-dark" href="{{ url('/news') }}">News</a>
         </li>
 
         @if (Route::has('login'))
