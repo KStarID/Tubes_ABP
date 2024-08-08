@@ -66,7 +66,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="text-lg font-semibold">Add New Car
-                        <a href="{{ route('cars') }}" class="btn btn-sm btn-outline-danger float-end">Back</a>
+                        <a href="{{ route('cars') }}" class="btn btn-sm btn-danger float-end">Back</a>
                     </h4>
                 </div>
             </div>
@@ -190,13 +190,13 @@
 
                     <div class="form-group text-center">
                         {!! Form::submit('Add Cars', [
-                            'class' => 'btn btn-outline-info btn-wide',
+                            'class' => 'btn btn-info btn-wide',
                             'onclick' => 'return confirmSubmission()',
                         ]) !!}
                     </div>
 
                     <div class="form-group text-center">
-                        <button type="reset" class="btn btn-sm btn-outline-danger ">Reset</button>
+                        <button type="reset" class="btn btn-sm btn-danger ">Reset</button>
                     </div>
 
                     {!! Form::close() !!}

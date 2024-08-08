@@ -66,7 +66,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="text-lg font-semibold">Edit Cars
-                        <a href="{{ route('cars') }}" class="btn btn-sm btn-error float-end">Back</a>
+                        <a href="{{ route('cars') }}" class="btn btn-sm btn-danger float-end">Back</a>
                     </h4>
                 </div>
             </div>
@@ -166,11 +166,11 @@
                     </div>
 
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-accent btn-wide" onclick="return confirmSubmission()">Update
+                        <button type="submit" class="btn btn-info btn-wide" onclick="return confirmSubmission()">Update
                             Cars</button>
                     </div>
                     <div class="form-group text-center">
-                        <button type="reset" class="btn btn-sm btn-outline btn-error ">Reset</button>
+                        <button type="reset" class="btn btn-sm btn-outline btn-danger ">Reset</button>
                     </div>
                 </form>
             </div>
