@@ -108,15 +108,15 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-                <h4 class="text-xl font-semibold">Profile Information</h4>
-                <p class="text-sm text-gray-500 mt-2">
+                <h4 class="text-xl font-semibold dark:text-white">Profile Information</h4>
+                <p class="text-sm text-gray-500 mt-2 dark:text-white">
                     Update your account's profile information and email address.<br><br>
                     When you change your email, you need to verify your email else the account will be blocked.
                 </p>
             </div>
 
             <div class="md:col-span-2">
-                <div class="bg-white shadow rounded-lg p-6">
+                <div class="bg-white shadow rounded-lg p-6 dark:text-white dark:bg-gray-900 dark:border-gray-500">
                     {!! Form::model($user, [
                         'method' => 'PATCH',
                         'action' => ['App\Http\Controllers\Auth\ProfileController@update', $user->uid],
@@ -125,16 +125,18 @@
 
                     <div class="space-y-4">
                         <div>
-                            {!! Form::label('displayName', 'Name', ['class' => 'block text-sm font-medium text-gray-700']) !!}
+                            {!! Form::label('displayName', 'Name', ['class' => 'dark:text-white block text-sm font-medium text-gray-700']) !!}
                             {!! Form::text('displayName', null, [
-                                'class' => 'mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
+                                'class' =>
+                                    'dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
                             ]) !!}
                         </div>
 
                         <div>
-                            {!! Form::label('email', 'Email', ['class' => 'block text-sm font-medium text-gray-700']) !!}
+                            {!! Form::label('email', 'Email', ['class' => 'dark:text-white block text-sm font-medium text-gray-700']) !!}
                             {!! Form::email('email', null, [
-                                'class' => 'mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
+                                'class' =>
+                                    'dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
                             ]) !!}
                         </div>
                     </div>
@@ -154,27 +156,32 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             <div>
-                <h4 class="text-xl font-semibold">Update Password</h4>
-                <p class="text-sm text-gray-500 mt-2">Ensure your account is using a long, random password to stay secure.
+                <h4 class="text-xl font-semibold dark:text-white">Update Password</h4>
+                <p class="text-sm text-gray-500 mt-2 dark:text-white">Ensure your account is using a long, random password
+                    to stay secure.
                 </p>
             </div>
 
             <div class="md:col-span-2">
-                <div class="bg-white shadow rounded-lg p-6">
+                <div class="bg-white shadow rounded-lg p-6 dark:text-white dark:bg-gray-900 dark:border-gray-500">
                     <div class="space-y-4">
                         <div>
-                            {!! Form::label('new_password', 'New Password', ['class' => 'block text-sm font-medium text-gray-700']) !!}
+                            {!! Form::label('new_password', 'New Password', [
+                                'class' => 'dark:text-white block text-sm font-medium text-gray-700',
+                            ]) !!}
                             {!! Form::password('new_password', [
-                                'class' => 'mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
+                                'class' =>
+                                    'dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
                             ]) !!}
                         </div>
 
                         <div>
                             {!! Form::label('new_confirm_password', 'Confirm Password', [
-                                'class' => 'block text-sm font-medium text-gray-700',
+                                'class' => 'dark:text-white block text-sm font-medium text-gray-700',
                             ]) !!}
                             {!! Form::password('new_confirm_password', [
-                                'class' => 'mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
+                                'class' =>
+                                    'dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
                             ]) !!}
                         </div>
                     </div>
@@ -192,13 +199,13 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             <div>
-                <h4 class="text-xl font-semibold">Delete Account</h4>
-                <p class="text-sm text-gray-500 mt-2">Permanently delete your account.</p>
+                <h4 class="text-xl font-semibold dark:text-white">Delete Account</h4>
+                <p class="text-sm text-gray-500 mt-2 dark:text-white">Permanently delete your account.</p>
             </div>
 
             <div class="md:col-span-2">
-                <div class="bg-white shadow rounded-lg p-6">
-                    <p class="text-sm text-gray-500">
+                <div class="bg-white shadow rounded-lg p-6 dark:text-white dark:bg-gray-900 dark:border-gray-500">
+                    <p class="text-sm text-gray-500 dark:text-white">
                         Once your account is deleted, all of its resources and data will be permanently deleted. Before
                         deleting your account, please download any data or information that you wish to retain.
                     </p>

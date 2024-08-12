@@ -1,19 +1,23 @@
 @extends('layouts.app')
 @section('navbar_home')
     @guest
-        <li class="nav-item">
+        <li
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
             <a class="nav-link text-dark" href="{{ url('/home') }}">Home</a>
         </li>
 
-        <li class="nav-item">
+        <li
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
             <a class="nav-link text-dark" href="{{ url('/home/news') }}">News</a>
         </li>
     @else
-        <li class="nav-item">
+        <li
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
             <a class="nav-link text-dark" href="home/profile">{{ __('Profile') }}</a>
         </li>
 
-        <li class="nav-item">
+        <li
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
             <a class="nav-link text-dark" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
       document.getElementById('logout-form').submit();">
@@ -23,20 +27,18 @@
                 @csrf
             </form>
         </li>
-        </div>
-        </li>
     @endguest
 @endsection
 
 @section('content')
-    <section class="bg-gray-50 dark:bg-gray-900">
+    <section class="bg-gray-50 dark:bg-gray-800">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="h-8 mr-2" src="{{ asset('admin_assets/img/removebg.png') }}" alt="logo">
                 BaroCars
             </a>
             <div
-                class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-900 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Sign in to your account

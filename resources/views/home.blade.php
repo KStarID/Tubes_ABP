@@ -46,7 +46,6 @@
 </style>
 
 @section('content')
-
     <div class="container mx-auto mb-10">
 
         @if (session('status'))
@@ -83,7 +82,8 @@
                         placeholder="Search" />
                 </div>
 
-                <select name="filter" class="select ms-1 select-bordered join-item bg-white rounded-md">
+                <select name="filter"
+                    class="select ms-1 select-bordered join-item bg-white rounded-lg dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:bg-gray-700">
                     <option disabled selected>Filter</option>
                     <option value="Bekas">USED</option>
                     <option value="Baru">NEW</option>
@@ -178,7 +178,7 @@
         </div>
 
         <div
-            class="mx-auto p-6 my-6 bg-gray-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            class="mx-auto p-6 my-6 bg-gray-200 border border-gray-200 rounded-lg shadow dark:text-white dark:bg-gray-900 dark:border-gray-500">
             <div class="card-header">
                 <h4 class="text-lg font-semibold" style="margin-left: 3rem; margin-right: 3rem;">Cars List
                     @guest
@@ -194,7 +194,8 @@
         <!-- Cards Section -->
         <div class="mb-4 grid gap-5 sm:grid-cols-2 md:mb-8 lg:grid-cols-2 xl:grid-cols-3">
             @forelse($pagedPaginator->items() as $key => $item)
-                <div class="card-2 bg-white shadow-lg rounded-lg overflow-hidden">
+                <div
+                    class="card-2 bg-white shadow-lg rounded-lg overflow-hidden dark:text-white dark:bg-gray-900 dark:border-gray-500">
                     <figure>
                         <img src="{{ $item['image'] }}" alt="car!" class="object-cover w-full h-56">
                     </figure>
