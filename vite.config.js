@@ -12,4 +12,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        https: true, // Ini hanya untuk development, tetapi pastikan di production menggunakan HTTPS
+    },
 });

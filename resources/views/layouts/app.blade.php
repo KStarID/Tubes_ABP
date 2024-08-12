@@ -26,7 +26,7 @@
         class="bg-white shadow-md dark:bg-gray-900 fixed w-full z-20 sticky top-0 border-b border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="{{ url('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img id="logo-img" src="{{ URL('..\admin_assets\img\removebg.png') }}" class="h-8"
+                <img id="logo-img" src="{{ asset('admin_assets/img/removebg.png') }}" class="h-8"
                     alt="Barocars Logo">
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BaroCars</span>
             </a>
