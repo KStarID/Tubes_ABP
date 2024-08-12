@@ -7,9 +7,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    @vite('resources\css\app.css')
     <title>{{ config('BaroCars', 'BaroCars') }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
