@@ -28,7 +28,7 @@
             dark:bg-gray-900 fixed w-full z-20 dark:border-gray-600">
             <div class="flex justify-start items-center justify-between mx-auto">
                 <a href="{{ url('/') }}" class="flex items-center justify-between mr-4">
-                    <img id="logo-img" src="{{ URL('..\admin_assets\img\removebg.png') }}" class="mr-3 h-8"
+                    <img id="logo-img" src="{{ asset('admin_assets/img/removebg.png') }}" class="mr-3 h-8"
                         alt="Flowbite Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BaroCars
                     </span>
