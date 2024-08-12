@@ -67,9 +67,6 @@ Route::middleware(['auth', 'fireauth'])->group(function () {
     Route::get('/home/edit_news/{id}', [App\Http\Controllers\Firebase\NewsController::class, 'edit_news'])->name('edit_news');
     Route::put('/home/update_news/{id}', [App\Http\Controllers\Firebase\NewsController::class, 'update_news'])->name('update_news');
 
-    Route::get('/home/upload_image/{id}', [App\Http\Controllers\Firebase\ImageController::class, 'news'])->name('upload_image_news');
-    Route::put('/home/update_image/{id}', [App\Http\Controllers\Firebase\ImageController::class, 'storenews'])->name('update_image_news');
-
     Route::get('/home/news_details/{id}', [App\Http\Controllers\Firebase\NewsController::class, 'show_news'])->name('product_details');
 });
 

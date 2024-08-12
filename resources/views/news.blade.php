@@ -145,7 +145,7 @@
         </div>
 
         <div
-            class="mx-auto p-6 my-6 bg-gray-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            class="mx-auto p-6 my-6 bg-gray-200 border border-gray-200 rounded-lg shadow dark:text-white dark:bg-gray-900 dark:border-gray-500">
             <div class="card-header">
                 <h4 class="text-lg font-semibold" style="margin-left: 3rem; margin-right: 3rem;">News List
                     @guest
@@ -160,7 +160,8 @@
         <!-- Cards Section -->
         <div class="mb-4 grid gap-5 sm:grid-cols-2 md:mb-8 lg:grid-cols-2 xl:grid-cols-3">
             @forelse($pagedPaginator->items() as $key => $item)
-                <div class="card-2 bg-white shadow-lg rounded-lg overflow-hidden">
+                <div
+                    class="card-2 bg-white shadow-lg rounded-lg overflow-hidden dark:text-white dark:bg-gray-900 dark:border-gray-500">
                     <figure>
                         <img src="{{ $item['image'] }}" alt="car!" class="object-cover w-full h-56">
                     </figure>

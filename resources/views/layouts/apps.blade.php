@@ -11,6 +11,15 @@
     <title>{{ config('BaroCars', 'BaroCars') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+                '(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
 
 <body class="min-h-screen">
@@ -20,7 +29,8 @@
             dark:bg-gray-900 fixed w-full z-20 dark:border-gray-600">
             <div class="flex justify-start items-center justify-between mx-auto">
                 <a href="{{ url('/') }}" class="flex items-center justify-between mr-4">
-                    <img src="{{ URL('..\admin_assets\img\removebg.png') }}" class="mr-3 h-8" alt="Flowbite Logo" />
+                    <img id="logo-img" src="{{ URL('..\admin_assets\img\removebg.png') }}" class="mr-3 h-8"
+                        alt="Flowbite Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BaroCars
                     </span>
                 </a>
@@ -47,6 +57,19 @@
                             </a>
                         @endif
                     @else
+                        <button id="theme-toggle" type="button"
+                            class="mr-3 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                            </svg>
+                            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                    fill-rule="evenodd" clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
                         <a href="/home/profile">
                             <button
                                 class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
@@ -141,15 +164,6 @@
             </div>
             <div
                 class="hidden absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-gray-800 z-20">
-                <a href="#"
-                    class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600">
-                    <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z">
-                        </path>
-                    </svg>
-                </a>
                 <a href="#" data-tooltip-target="tooltip-settings"
                     class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
                     <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
@@ -292,12 +306,65 @@
             </div>
         </aside>
 
-        <main class="p-4 md:ml-64 h-auto pt-20">
+        <main class="h-auto p-4 md:ml-64 pt-20">
+            <script>
+                var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+                var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+                var logoImg = document.getElementById('logo-img');
+
+                // Fungsi untuk memperbarui logo berdasarkan tema
+                function updateLogo() {
+                    if (document.documentElement.classList.contains('dark')) {
+                        logoImg.src = "{{ asset('admin_assets/img/image2.png') }}";
+                    } else {
+                        logoImg.src = "{{ asset('admin_assets/img/removebg.png') }}";
+                    }
+                }
+
+                // Mengatur ikon berdasarkan tema saat ini
+                if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+                        '(prefers-color-scheme: dark)').matches)) {
+                    themeToggleLightIcon.classList.remove('hidden');
+                    updateLogo(); // Memastikan logo diperbarui sesuai tema
+                } else {
+                    themeToggleDarkIcon.classList.remove('hidden');
+                    updateLogo(); // Memastikan logo diperbarui sesuai tema
+                }
+
+                // Mengubah tema ketika tombol diklik
+                var themeToggleBtn = document.getElementById('theme-toggle');
+                themeToggleBtn.addEventListener('click', function() {
+                    themeToggleDarkIcon.classList.toggle('hidden');
+                    themeToggleLightIcon.classList.toggle('hidden');
+
+                    if (localStorage.getItem('color-theme')) {
+                        if (localStorage.getItem('color-theme') === 'light') {
+                            document.documentElement.classList.add('dark');
+                            localStorage.setItem('color-theme', 'dark');
+                        } else {
+                            document.documentElement.classList.remove('dark');
+                            localStorage.setItem('color-theme', 'light');
+                        }
+                    } else {
+                        if (document.documentElement.classList.contains('dark')) {
+                            document.documentElement.classList.remove('dark');
+                            localStorage.setItem('color-theme', 'light');
+                        } else {
+                            document.documentElement.classList.add('dark');
+                            localStorage.setItem('color-theme', 'dark');
+                        }
+                    }
+
+                    // Perbarui logo setelah tema diubah
+                    updateLogo();
+                });
+            </script>
+
             @yield('content')
 
             <footer
                 class="bg-gray-700 mt-4 rounded-lg shadow sm:flex sm:items-center sm:justify-between sm:p-6 xl:p-8 dark:bg-gray-800 antialiased">
-                <p class="mb-2 text-sm text-center text-gray-200 dark:text-gray-400 sm:mb-0">
+                <p class="mb-2 text-sm text-center text-gray-200 dark:text-gray-300 sm:mb-0">
                     &copy; 2024 <a href="https://barocars.up.railway.app/" class="hover:underline"
                         target="_blank">BaroCars
                         Team</a>.
@@ -305,7 +372,7 @@
                 </p>
                 <div class="flex justify-center items-center space-x-2">
                     <a href="#" data-tooltip-target="tooltip-facebook"
-                        class="inline-flex justify-center p-2 text-gray-200 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
+                        class="inline-flex justify-center p-2 text-gray-200 rounded-lg cursor-pointer dark:text-gray-300 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor" viewBox="0 0 8 19">
                             <path fill-rule="evenodd"
@@ -320,7 +387,7 @@
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
                     <a href="#" data-tooltip-target="tooltip-twitter"
-                        class="inline-flex justify-center p-2 text-gray-200 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
+                        class="inline-flex justify-center p-2 text-gray-200 rounded-lg cursor-pointer dark:text-gray-300 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 20 20">
                             <path fill="currentColor"
@@ -334,7 +401,7 @@
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
                     <a href="#" data-tooltip-target="tooltip-github"
-                        class="inline-flex justify-center p-2 text-gray-200 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
+                        class="inline-flex justify-center p-2 text-gray-200 rounded-lg cursor-pointer dark:text-gray-300 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
