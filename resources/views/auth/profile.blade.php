@@ -2,169 +2,222 @@
 @section('navbar_home')
     @guest
         @if (Route::has('login'))
-            <li class="nav-item">
+            <li>
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
         @endif
 
         @if (Route::has('register'))
-            <li class="nav-item">
+            <li>
                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
             </li>
         @endif
     @else
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="{{ url('/home') }}">Home</a>
+        <li>
+            <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                href="{{ url('/home') }}">Home</a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="{{ url('/home/news') }}">News</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-      document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-        </li>
-        </div>
+        <li>
+            <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                href="{{ url('/news') }}">News</a>
         </li>
     @endguest
 @endsection
+
 @section('content')
 
-    <div class="container">
+    <div class="container mx-auto p-4">
+
         @if (Session::has('message'))
-            <div class="alert alert-info alert-dismissible fade show" role="alert">
-                {{ Session::get('message') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+            <div id="alert-border-1"
+                class="flex items-center p-4 mb-4 text-blue-800 border-t-4 border-blue-300 bg-blue-50 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800"
+                role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <div class="ms-3 text-sm font-medium">
+                    {{ Session::get('message') }}
+                </div>
+                <button type="button"
+                    class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700"
+                    data-dismiss-target="#alert-border-1" aria-label="Close">
+                    <span class="sr-only">Dismiss</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
                 </button>
             </div>
         @endif
 
         @if ($errors->any())
             @foreach ($errors->all() as $error)
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ $error }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                <div id="alert-border-2"
+                    class="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800"
+                    role="alert">
+                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <div class="ms-3 text-sm font-medium">
+                        {{ $error }}
+                    </div>
+                    <button type="button"
+                        class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
+                        data-dismiss-target="#alert-border-2" aria-label="Close">
+                        <span class="sr-only">Dismiss</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
                     </button>
                 </div>
             @endforeach
         @endif
 
         @if (Session::has('error'))
-            <div class="alert alert-danger alert-dismissible fade show">
-                {{ Session::get('error') }}
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <div id="alert-border-2"
+                class="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800"
+                role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <div class="ms-3 text-sm font-medium">
+                    {{ Session::get('error') }}
+                </div>
+                <button type="button"
+                    class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
+                    data-dismiss-target="#alert-border-2" aria-label="Close">
+                    <span class="sr-only">Dismiss</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
             </div>
         @endif
 
-        <div class="row justify-content-center">
-            <div class="col-lg-4">
-                <h4>Profile Information</code></h5>
-                    <span class="text-justify mb-3" style="padding-top:-3px;">Update your account's profile information and
-                        email address.<br><br> When You change your email ,you need to verify your email else the account
-                        will be blocked</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+                <h4 class="text-xl font-semibold">Profile Information</h4>
+                <p class="text-sm text-gray-500 mt-2">
+                    Update your account's profile information and email address.<br><br>
+                    When you change your email, you need to verify your email else the account will be blocked.
+                </p>
             </div>
 
-            <div class="col-lg-8 text-center pt-0">
-                <div class="card py-4 mb-5 mt-md-3 bg-white rounded " style="box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175)">
-
+            <div class="md:col-span-2">
+                <div class="bg-white shadow rounded-lg p-6">
                     {!! Form::model($user, [
                         'method' => 'PATCH',
                         'action' => ['App\Http\Controllers\Auth\ProfileController@update', $user->uid],
                     ]) !!}
                     {!! Form::open() !!}
 
-                    <div class="form-group px-3">
-                        {!! Form::label('displayName', 'Name ', ['class' => 'col-12 text-left pl-0']) !!}
-                        {!! Form::text('displayName', null, ['class' => ' col-md-8 form-control']) !!}
+                    <div class="space-y-4">
+                        <div>
+                            {!! Form::label('displayName', 'Name', ['class' => 'block text-sm font-medium text-gray-700']) !!}
+                            {!! Form::text('displayName', null, [
+                                'class' => 'mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
+                            ]) !!}
+                        </div>
 
-                        {!! Form::label('email', 'Email ', ['class' => 'pt-3 col-12 text-left pl-0']) !!}
-                        {!! Form::email('email', null, ['class' => 'col-md-8 form-control']) !!}
-
-                    </div>
-
-                    <div class="form-group row mb-0 mr-4">
-                        <div class="col-md-8 offset-md-4 text-right">
-                            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                        <div>
+                            {!! Form::label('email', 'Email', ['class' => 'block text-sm font-medium text-gray-700']) !!}
+                            {!! Form::email('email', null, [
+                                'class' => 'mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
+                            ]) !!}
                         </div>
                     </div>
 
-                </div>
-            </div>
-
-        </div>
-        <div class="border-bottom border-grey"></div>
-
-        <div class="row justify-content-center pt-5">
-            <div class="col-lg-4">
-                <h4>Update Password</code></h5>
-                    <span class="text-justify" style="padding-top:-3px;">Ensure your account is using a long, random
-                        password to stay secure.</span>
-            </div>
-
-            <div class="col-lg-8 text-center pt-0">
-                <div class="card py-4 mb-5 mt-md-3 bg-white rounded" style="box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175)">
-
-                    <div class="form-group px-3">
-                        {!! Form::label('new_password', 'New Password:', ['class' => 'col-12 text-left pl-0']) !!}
-                        {!! Form::password('new_password', ['class' => 'col-md-8 form-control']) !!}
+                    <div class="flex justify-end mt-6">
+                        {!! Form::submit('Save', [
+                            'class' => 'cursor-pointer hover:bg-indigo-500 bg-indigo-600 text-white px-4 py-2 rounded-md',
+                        ]) !!}
                     </div>
 
-                    <div class="form-group px-3">
-                        {!! Form::label('new_confirm_password', 'Confirm Password:', ['class' => 'col-12 text-left pl-0']) !!}
-                        {!! Form::password('new_confirm_password', ['class' => 'col-md-8 form-control']) !!}
-                    </div>
-
-                    <div class="form-group row mb-0 mr-4">
-                        <div class="col-md-8 offset-md-4 text-right">
-                            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                        </div>
-                    </div>
                     {!! Form::close() !!}
                 </div>
             </div>
-
         </div>
 
-        <div class="border-bottom border-grey"></div>
+        <div class="border-t border-gray-200 mt-6"></div>
 
-        <div class="row justify-content-center pt-5">
-            <div class="col-lg-4">
-                <h4>Delete Account</code></h5>
-                    <span class="text-justify" style="padding-top:-3px;">Permanently delete your account.</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            <div>
+                <h4 class="text-xl font-semibold">Update Password</h4>
+                <p class="text-sm text-gray-500 mt-2">Ensure your account is using a long, random password to stay secure.
+                </p>
             </div>
 
-            <div class="col-lg-8 pt-0">
-                <div class="card py-4 mb-5 mt-md-3 bg-white rounded" style="box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175)">
-                    <div class="text-left px-3">
+            <div class="md:col-span-2">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <div class="space-y-4">
+                        <div>
+                            {!! Form::label('new_password', 'New Password', ['class' => 'block text-sm font-medium text-gray-700']) !!}
+                            {!! Form::password('new_password', [
+                                'class' => 'mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
+                            ]) !!}
+                        </div>
+
+                        <div>
+                            {!! Form::label('new_confirm_password', 'Confirm Password', [
+                                'class' => 'block text-sm font-medium text-gray-700',
+                            ]) !!}
+                            {!! Form::password('new_confirm_password', [
+                                'class' => 'mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500',
+                            ]) !!}
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end mt-6">
+                        {!! Form::submit('Save', [
+                            'class' => 'cursor-pointer hover:bg-indigo-500 bg-indigo-600 text-white px-4 py-2 rounded-md',
+                        ]) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-200 mt-6"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            <div>
+                <h4 class="text-xl font-semibold">Delete Account</h4>
+                <p class="text-sm text-gray-500 mt-2">Permanently delete your account.</p>
+            </div>
+
+            <div class="md:col-span-2">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <p class="text-sm text-gray-500">
                         Once your account is deleted, all of its resources and data will be permanently deleted. Before
                         deleting your account, please download any data or information that you wish to retain.
-                    </div>
+                    </p>
 
                     {!! Form::open([
                         'method' => 'DELETE',
                         'action' => ['App\Http\Controllers\Auth\ProfileController@destroy', $user->uid],
                     ]) !!}
-                    {!! Form::open() !!}
-                    <div class="form-group row mb-0 mr-4 pt-4 px-3">
-                        <div class="col-md-8 offset-l-4 text-left">
-                            {!! Form::submit('Delete Account', ['class' => 'btn btn-danger pl-3']) !!}
-                        </div>
+
+                    <div class="flex justify-start mt-6">
+                        {!! Form::submit('Delete Account', [
+                            'class' => 'cursor-pointer hover:bg-red-500 bg-red-600 text-white px-4 py-2 rounded-md',
+                        ]) !!}
                     </div>
+
                     {!! Form::close() !!}
                 </div>
             </div>
-
         </div>
-
     </div>
 
 @endsection
