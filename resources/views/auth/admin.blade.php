@@ -1,164 +1,170 @@
-@extends('layouts.app')
+@extends('layouts.apps')
 
 @section('navbar_home')
     @guest
         @if (Route::has('login'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            <li>
+                <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
         @endif
 
         @if (Route::has('register'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            <li>
+                <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    href="{{ route('register') }}">{{ __('Register') }}</a>
             </li>
         @endif
     @else
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="{{ url('/home') }}">Home</a>
+        <li>
+            <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-dark"
+                href="{{ url('/home') }}">Home</a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="{{ url('/home/news') }}">News</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="/home/profile">{{ __('Profile') }}</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link text-dark active" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
+        <li>
+            <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-dark"
+                href="{{ url('/home/news') }}">News</a>
         </li>
     @endguest
 @endsection
 
 @section('content')
-    <style>
-        /* Your styles here */
-        body {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            overflow-y: scroll;
-        }
-
-        body::-webkit-scrollbar {
-            display: none;
-        }
-
-        .list-group-item.active {
-            background-color: rgba(232, 236, 238, 255) !important;
-            color: black;
-        }
-    </style>
-
-    <div class="container">
+    <div class="container mx-auto p-4 my-6">
 
         @if (Session::has('message'))
-            <p class=" pb-3 alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show">
-                {{ Session::get('message') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+            <div id="alert-border-1"
+                class="flex items-center p-4 mb-4 text-blue-800 border-t-4 border-blue-300 bg-blue-50 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800"
+                role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <div class="ms-3 text-sm font-medium">
+                    {{ Session::get('message') }}
+                </div>
+                <button type="button"
+                    class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700"
+                    data-dismiss-target="#alert-border-1" aria-label="Close">
+                    <span class="sr-only">Dismiss</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
                 </button>
-            </p>
+            </div>
         @endif
 
         @if (Session::has('delete'))
-            <p class=" pb-3 alert {{ Session::get('alert-class', 'alert-danger') }} alert-dismissible fade show">
-                {{ Session::get('delete') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+            <div id="alert-border-2"
+                class="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800"
+                role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <div class="ms-3 text-sm font-medium">
+                    {{ Session::get('delete') }}
+                </div>
+                <button type="button"
+                    class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
+                    data-dismiss-target="#alert-border-2" aria-label="Close">
+                    <span class="sr-only">Dismiss</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
                 </button>
-            </p>
+            </div>
         @endif
 
         @if ($errors->any())
             @foreach ($errors->all() as $error)
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>{{ $error }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                <div id="alert-border-2"
+                    class="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800"
+                    role="alert">
+                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <div class="ms-3 text-sm font-medium">
+                        {{ $error }}
+                    </div>
+                    <button type="button"
+                        class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
+                        data-dismiss-target="#alert-border-2" aria-label="Close">
+                        <span class="sr-only">Dismiss</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
                     </button>
                 </div>
             @endforeach
         @endif
 
-        <div class="row">
-            <div class="col-md-3 col-sm-12 p-3">
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action mb-3 border active"
-                        id="dashboardLink">Dashboard</a>
-                    <a href="{{ route('cars') }}" class="list-group-item list-group-item-action mb-3 border"
-                        id="CarsLink">Cars</a>
-                    <a href="{{ route('news_admin') }}" class="list-group-item list-group-item-action mb-3 border"
-                        id="CarsLink">News</a>
+        <div class="col-span-2">
+            <!-- Dashboard Content -->
+            <div class="bg-white shadow-md rounded-lg p-6" id="dashboardContent">
+                <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span
+                        class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Dashboard</span>
+                </h1>
+                <div class="grid grid-cols-3 gap-4">
+                    <!-- Example: Total Users Count -->
+                    <div class="bg-yellow-100 text-center rounded-lg shadow p-4">
+                        <div class="font-bold text-yellow-800">Total Users</div>
+                        <div class="text-4xl mt-5">{{ count($users) }}</div>
+                    </div>
+
+                    <!-- Example: System Information -->
+                    <div class="col-span-2 bg-green-100 rounded-lg shadow p-4">
+                        <div class="font-bold text-center text-green-80">System Information</div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between">
+                                <span><strong>Laravel Version</strong></span>
+                                <span>{{ Illuminate\Foundation\Application::VERSION }}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span><strong>PHP Version</strong></span>
+                                <span>{{ PHP_VERSION }}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span><strong>Database</strong></span>
+                                <span>Firebase</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-9 col-sm-12 p-3">
-                <!-- Dashboard Content -->
-                <div class="card rounded content-section" id="dashboardContent">
-                    <h5 class="card-header">Dashboard Content</h5>
-                    <div class="card-body row">
-                        <!-- Example: Total Users Count -->
-                        <div class="col-3">
-                            <div class="card rounded text-center h-100">
-                                <div class="card-header bg-warning">Total Users</div>
-                                <div class="card-body display-4">{{ count($users) }}</div>
-                            </div>
+                <!-- Example: Recent Active Users Table -->
+                <div class="col-span-3 pt-4">
+                    <div class="bg-blue-100 text-white rounded-lg shadow p-4">
+                        <div class="bg-indigo-600 p-2 rounded-t-lg text-center">
+                            Recent Active Users
                         </div>
-
-                        <!-- Example: System Information -->
-                        <div class="col-9">
-                            <div class="card rounded h-100">
-                                <div class="card-header bg-success text-center">System Information</div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-4 text-left"><strong>Laravel Version</strong></div>
-                                        <div class="col-8">: &ThinSpace; {{ Illuminate\Foundation\Application::VERSION }}
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 text-left"><strong>PHP Version</strong></div>
-                                        <div class="col-8">: &ThinSpace; {{ PHP_VERSION }}</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 text-left"><strong>Database</strong></div>
-                                        <div class="col-8">: &ThinSpace; Firebase</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Example: Recent Active Users Table -->
-                        <div class="col-12 pt-3">
-                            <div class="card rounded ">
-                                <div class="card-header bg-info text-white">Recent Active Users</div>
-                                <table id="usersTable" class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">First Name</th>
-                                            <th scope="col">Last Logged-In</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($users as $user)
-                                            <tr>
-                                                <td>{{ $user->displayName }}</td>
-                                                <td>{{ Carbon\Carbon::parse($user->metadata->lastLoginAt)->diffForHumans() }}
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <table id="usersTable" class="min-w-full table-auto bg-white rounded-lg shadow mt-2">
+                            <thead>
+                                <tr class="bg-indigo-600 text-white">
+                                    <th class="py-2 px-4">First Name</th>
+                                    <th class="py-2 px-4">Last Logged-In</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td class="py-2 px-4 text-black border-2">{{ $user->displayName }}</td>
+                                        <td class="py-2 px-4 text-black border-2">
+                                            {{ Carbon\Carbon::parse($user->metadata->lastLoginAt)->diffForHumans() }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

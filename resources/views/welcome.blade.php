@@ -3,38 +3,32 @@
 @section('navbar_home')
     @if (Route::has('login'))
         @auth
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ url('/home') }}">Home</a>
+            <li>
+                <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    href="{{ url('/home') }}">Home</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ url('/news') }}">News</a>
+            <li>
+                <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    href="{{ url('/news') }}">News</a>
             </li>
         @else
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ url('/home') }}">Home</a>
+            <li>
+                <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    href="{{ url('/home') }}">Home</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ url('/news') }}">News</a>
+            <li>
+                <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    href="{{ url('/news') }}">News</a>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ route('login') }}">Login</a>
-            </li>
-
-            @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('register') }}">Register</a>
-                </li>
-            @endif
         @endauth
     @else
     @endif
 @endsection
 
 @section('content')
-    <div class="hero bg-cover bg-center flex items-center justify-center text-white">
+    <div class="hero bg-cover bg-center flex items-center justify-center text-white my-2">
         <div class="text">
             <h4 class="text-3xl font-semibold mb-2">Powerful, Fun and</h4>
             <h1 class="text-5xl font-bold mb-4">Lets to <br> <span class="text-blue-500">Drive</span></h1>
@@ -44,26 +38,27 @@
     </div>
 
     <div class="container mx-auto my-8">
-        <div class="card">
-            <div class="card-header text-center">{{ __('Welcome') }}</div>
+        <div class="container text-center my-5">
+            <h1
+                class="my-9 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                Welcome to <a href="https://barocars.up.railway.app/"
+                    class="text-blue-500 hover:underline hover:bg-gray-300 md:hover:bg-transparent md:hover:text-blue-700 ">BaroCars
+                    Web</a> <span>&#127881;</span> </h1>
+            <div
+                class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 
-            <div class="card-body">
-                <div class="container text-center mt-5">
-                    <h1 class="text-5xl font-bold mb-5">Welcome to <a href="https://barocars.up.railway.app/"
-                            class="text-primary hover:text-secondary">BaroCars Web</a> <span>&#127881;</span>
-                    </h1>
-                    <div>
-                        <img src="{{ asset('admin_assets/img/image1.jpg') }}">
-                    </div>
-                    <p class="leading-relaxed my-5">We've seamlessly integrated Firebase into our platform,
-                        enabling powerful features like <span class="text-danger">Realtime Database</span>, <span
-                            class="text-danger">Authentication</span>, <span class="text-danger">Email
-                            Verification</span>, and an <span class="text-danger">Admin Panel</span>. With Firebase,
+                <img class="h-auto max-w-xl " src="{{ asset('admin_assets/img/removebg.png') }}">
+                <div class="flex flex-col justify-between p-4 leading-normal">
+                    <p class="text-center">We've seamlessly integrated Firebase into our platform,
+                        enabling powerful features like <span class="text-red-400">Realtime Database</span>, <span
+                            class="text-red-400">Authentication</span>, <span class="text-red-400">Email
+                            Verification</span>, and an <span class="text-red-400">Admin Panel</span>. With Firebase,
                         we ensure real-time data updates, secure user authentication, and efficient administration.
                         Lets go Explore!</p>
-                    <p class="text-lg">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP
+                    <p class="text-lg my-2">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP
                         v{{ PHP_VERSION }})</p>
                 </div>
+
             </div>
         </div>
     </div>
