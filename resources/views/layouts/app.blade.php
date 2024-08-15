@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -29,12 +29,15 @@
     <nav
         class="bg-white shadow-md dark:bg-gray-900 fixed w-full z-20 sticky top-0 border-b border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="{{ url('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img id="logo-img" src="{{ asset('admin_assets/img/removebg.png') }}" class="h-8"
-                    alt="Barocars Logo">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BaroCars</span>
-            </a>
-            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <div class="w-full md:w-auto flex justify-center mb-4 md:mb-0">
+                <a href="{{ url('/') }}" class="flex items-center sm:mx-auto z-0 space-x-3 rtl:space-x-reverse">
+                    <img id="logo-img" src="{{ asset('admin_assets/img/removebg.png') }}" class="h-8"
+                        alt="Barocars Logo">
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BaroCars</span>
+                </a>
+            </div>
+
+            <div class="flex md:order-2 space-x-4 md:space-x-0 rtl:space-x-reverse">
                 @guest
                     <button id="theme-toggle" type="button"
                         class="mr-3 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
@@ -93,10 +96,9 @@
                         </button>
                     </a>
                     <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-      document.getElementById('logout-form').submit();">
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <button
-                            class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+                            class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
                             <span
                                 class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                 Logout
@@ -107,6 +109,17 @@
                         @csrf
                     </form>
                 @endguest
+                <!-- Open Main Menu on the right -->
+                <button data-collapse-toggle="navbar-sticky" type="button"
+                    class="inline-flex md:hidden items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
             </div>
 
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
@@ -119,6 +132,7 @@
             </div>
         </div>
     </nav>
+
 
     <main class="object-center">
         <script>
