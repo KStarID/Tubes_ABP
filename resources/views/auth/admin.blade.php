@@ -147,7 +147,8 @@
                         <div class="bg-indigo-600 p-2 rounded-t-lg text-center">
                             Recent Active Users
                         </div>
-                        <table id="usersTable" class="min-w-full table-auto bg-white rounded-lg shadow mt-2">
+                        <table id="usersTable"
+                            class="dark:bg-gray-800 dark:text-white min-w-full table-auto bg-white rounded-lg shadow mt-2">
                             <thead>
                                 <tr class="bg-indigo-600 text-white">
                                     <th class="py-2 px-4">First Name</th>
@@ -157,8 +158,9 @@
                             <tbody>
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td class="py-2 px-4 text-black border-2">{{ $user->displayName }}</td>
-                                        <td class="py-2 px-4 text-black border-2">
+                                        <td class="py-2 px-4 text-black border-2 dark:text-white">{{ $user->displayName }}
+                                        </td>
+                                        <td class="py-2 px-4 text-black border-2 dark:text-white">
                                             {{ Carbon\Carbon::parse($user->metadata->lastLoginAt)->diffForHumans() }}
                                         </td>
                                     </tr>
