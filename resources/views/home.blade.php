@@ -43,6 +43,10 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-5px);
     }
+
+    nav {
+        z-index: 10;
+    }
 </style>
 
 @section('content')
