@@ -127,24 +127,6 @@
                 <ul
                     class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                     @yield('navbar_home')
-                    @guest
-                        <li><a href="{{ route('login') }}"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Login</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li><a href="{{ route('register') }}"
-                                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Register</a>
-                            </li>
-                        @endif
-                    @else
-                        <li><a href="/home/profile"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Profile</a>
-                        </li>
-                        <li><a href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Logout</a>
-                        </li>
-                    @endguest
                 </ul>
             </div>
         </div>
