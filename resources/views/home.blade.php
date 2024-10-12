@@ -43,6 +43,14 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-5px);
     }
+
+    #default-carousel {
+        z-index: 1;
+    }
+
+    nav {
+        z-index: 10;
+    }
 </style>
 
 @section('content')
@@ -101,9 +109,9 @@
             </div>
         </form>
 
-        <div id="default-carousel" class="relative w-full" data-carousel="slide">
+        <div id="default-carousel" class="relative w-full mt-16" data-carousel="slide">
             <!-- Carousel wrapper -->
-            <div class="relative h-56 overflow-hidden rounded-lg md:h-5/6">
+            <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                 <!-- Item 1 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <img src="{{ asset('admin_assets/img/1.png') }}"
