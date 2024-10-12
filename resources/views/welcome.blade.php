@@ -92,7 +92,6 @@
             background-position: center;
             background-size: cover;
             display: flex;
-            justify-content: center;
         }
 
         .hero .text {
