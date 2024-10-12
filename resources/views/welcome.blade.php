@@ -3,27 +3,26 @@
 @section('navbar_home')
     @if (Route::has('login'))
         @auth
-            <li>
+            <li class="md:hidden">
                 <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                     href="{{ url('/home') }}">Home</a>
             </li>
 
-            <li>
+            <li class="md:hidden">
                 <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                     href="{{ url('/news') }}">News</a>
             </li>
         @else
-            <li>
+            <li class="md:hidden">
                 <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                     href="{{ url('/home') }}">Home</a>
             </li>
 
-            <li>
+            <li class="md:hidden">
                 <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                     href="{{ url('/news') }}">News</a>
             </li>
         @endauth
-    @else
     @endif
 @endsection
 
@@ -94,7 +93,6 @@
             background-size: cover;
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
         .hero .text {
