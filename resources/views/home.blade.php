@@ -43,10 +43,6 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-5px);
     }
-
-    nav {
-        z-index: 10;
-    }
 </style>
 
 @section('content')
@@ -105,7 +101,7 @@
             </div>
         </form>
 
-        <div id="default-carousel" class="relative w-full" data-carousel="slide">
+        <div id="default-carousel" class="relative w-full mt-16" data-carousel="slide">
             <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-5/6">
                 <!-- Item 1 -->
