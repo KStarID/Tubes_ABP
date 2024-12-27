@@ -29,6 +29,7 @@
     <nav
         class="bg-white shadow-md dark:bg-gray-900 fixed w-full z-20 top-0 border-b border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <!-- Logo Section -->
             <div class="flex items-center">
                 <a href="{{ url('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img id="logo-img" src="{{ asset('admin_assets/img/removebg.png') }}" class="h-8"
@@ -109,26 +110,25 @@
                         @csrf
                     </form>
                 @endguest
-                <!-- Open Main Menu on the right -->
+
+                <!-- Mobile Menu Button - Hanya tampil di mobile -->
                 <button data-collapse-toggle="navbar-sticky" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden lg:hidden xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="inline-flex md:hidden items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ml-2"
                     aria-controls="navbar-sticky" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 17 14">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
             </div>
+        </div>
 
-            <!-- Menu dropdown untuk layar kecil -->
-            <div class="items-center justify-between hidden w-full md:hidden lg:hidden xl:hidden" id="navbar-sticky">
-                <ul
-                    class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-                    @yield('navbar_home')
-                </ul>
-            </div>
+        <!-- Mobile Menu Dropdown -->
+        <div class="md:hidden hidden" id="navbar-sticky">
+            <ul class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                @yield('navbar_home')
+            </ul>
         </div>
     </nav>
 
