@@ -112,6 +112,7 @@
         var firebaseConfig = {
             apiKey: "AIzaSyAl4gTYNu0DbfR961joucQnGGmsO39SVss",
             authDomain: "testlaravel-8c5b7.firebaseapp.com",
+            databaseURL: "https://testlaravel-8c5b7-default-rtdb.asia-southeast1.firebasedatabase.app",
             projectId: "testlaravel-8c5b7",
             storageBucket: "testlaravel-8c5b7.appspot.com",
             messagingSenderId: "286128112173",
