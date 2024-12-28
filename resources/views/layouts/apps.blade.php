@@ -7,10 +7,10 @@
     
     <title>{{ config('BaroCars', 'BaroCars') }}</title>
     
-    <link rel="preload" as="style" href="{{ asset('build/assets/app-4c20103a.css') }}">
-    <link rel="modulepreload" href="{{ asset('build/assets/app-30cd03a3.js') }}">
-    <link rel="stylesheet" href="{{ asset('build/assets/app-4c20103a.css') }}">
-    <script type="module" src="{{ asset('build/assets/app-30cd03a3.js') }}"></script>
+    <link rel="preload" as="style" href="{{ secure_asset('build/assets/app-4c20103a.css') }}">
+    <link rel="modulepreload" href="{{ secure_asset('build/assets/app-30cd03a3.js') }}">
+    <link rel="stylesheet" href="{{ secure_asset('build/assets/app-4c20103a.css') }}">
+    <script type="module" src="{{ secure_asset('build/assets/app-30cd03a3.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     
     <script>
@@ -34,7 +34,7 @@
                             <span class="sr-only">Toggle sidebar</span>
                         </button>
                         <a href="{{ url('/') }}" class="flex items-center">
-                            <img id="logo-img" src="{{ asset('admin_assets/img/removebg.png') }}" class="h-8 mr-3" alt="Barocars Logo">
+                            <img id="logo-img" src="{{ secure_asset('admin_assets/img/removebg.png') }}" class="h-8 mr-3" alt="Barocars Logo">
                             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BaroCars</span>
                         </a>
                     </div>

@@ -7,10 +7,10 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="preload" as="style" href="{{ asset('build/assets/app-4c20103a.css') }}" />
-    <link rel="modulepreload" href="{{ asset('build/assets/app-30cd03a3.js') }}" />
-    <link rel="stylesheet" href="{{ asset('build/assets/app-4c20103a.css') }}" />
-    <script type="module" src="{{ asset('build/assets/app-30cd03a3.js') }}"></script>
+    <link rel="preload" as="style" href="{{ secure_asset('build/assets/app-4c20103a.css') }}" />
+    <link rel="modulepreload" href="{{ secure_asset('build/assets/app-30cd03a3.js') }}" />
+    <link rel="stylesheet" href="{{ secure_asset('build/assets/app-4c20103a.css') }}" />
+    <script type="module" src="{{ secure_asset('build/assets/app-30cd03a3.js') }}"></script>
 
     <title>{{ config('BaroCars', 'BaroCars') }}</title>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
@@ -32,7 +32,7 @@
             <!-- Logo Section -->
             <div class="flex items-center">
                 <a href="{{ url('/') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img id="logo-img" src="{{ asset('admin_assets/img/removebg.png') }}" class="h-8"
+                    <img id="logo-img" src="{{ secure_asset('admin_assets/img/removebg.png') }}" class="h-8"
                         alt="Barocars Logo">
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BaroCars</span>
                 </a>
@@ -116,7 +116,8 @@
                     class="inline-flex md:hidden items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ml-2"
                     aria-controls="navbar-sticky" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
@@ -126,7 +127,8 @@
 
         <!-- Mobile Menu Dropdown -->
         <div class="md:hidden hidden" id="navbar-sticky">
-            <ul class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+            <ul
+                class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                 @yield('navbar_home')
             </ul>
         </div>
