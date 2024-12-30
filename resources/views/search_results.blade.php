@@ -1,27 +1,49 @@
 @extends('layouts.app')
 
 @section('navbar_home')
-    @guest
-        <li class="nav-item">
-            <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-dar"
-                href="{{ url('/home') }}">Home</a>
-        </li>
+    <div class="flex flex-col space-y-2 items-center">
+        @guest
+            <a href="{{ url('/home') }}"
+                class="flex items-center justify-center w-full text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg px-3 py-2">
+                <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                        d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" />
+                </svg>
+                <span class="text-center">Home</span>
+            </a>
 
-        <li class="nav-item">
-            <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-dar"
-                href="{{ url('/news') }}">News</a>
-        </li>
-    @else
-        <li class="nav-item">
-            <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-dar"
-                href="{{ url('/home') }}">Home</a>
-        </li>
+            <a href="{{ url('/news') }}"
+                class="flex items-center justify-center w-full text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg px-3 py-2">
+                <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                        d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11.5c.07 0 .14-.007.207-.021.095.014.193.021.293.021h2a2 2 0 0 0 2-2V7a1 1 0 0 0-1-1h-1a1 1 0 1 0 0 2v11h-2V5a2 2 0 0 0-2-2H5Z" />
+                </svg>
+                <span class="text-center">News</span>
+            </a>
+        @else
+            <a href="{{ url('/home') }}"
+                class="flex items-center justify-center w-full text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg px-3 py-2">
+                <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                        d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" />
+                </svg>
+                <span class="text-center">Home</span>
+            </a>
 
-        <li class="nav-item">
-            <a class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-dar"
-                href="{{ url('/news') }}">News</a>
-        </li>
-    @endguest
+            <a href="{{ url('/news') }}"
+                class="flex items-center justify-center w-full text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg px-3 py-2">
+                <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                        d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11.5c.07 0 .14-.007.207-.021.095.014.193.021.293.021h2a2 2 0 0 0 2-2V7a1 1 0 0 0-1-1h-1a1 1 0 1 0 0 2v11h-2V5a2 2 0 0 0-2-2H5Z" />
+                </svg>
+                <span class="text-center">News</span>
+            </a>
+        @endguest
+    </div>
 @endsection
 
 <style>
@@ -33,10 +55,16 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-5px);
     }
+
+    .page-layout {
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+        padding-top: 64px;
+    }
 </style>
 
 @section('content')
-    <div class="container mx-auto px-4 my-10">
+    <div class="container mx-auto my-10 page-layout">
         <h1 class="mb-10 text-2xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
             Search Results for <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
                 "{{ $query }}"

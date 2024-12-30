@@ -7,10 +7,10 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="preload" as="style" href="{{ secure_asset('build/assets/app-4c20103a.css') }}" />
-    <link rel="modulepreload" href="{{ secure_asset('build/assets/app-30cd03a3.js') }}" />
-    <link rel="stylesheet" href="{{ secure_asset('build/assets/app-4c20103a.css') }}" />
-    <script type="module" src="{{ secure_asset('build/assets/app-30cd03a3.js') }}"></script>
+    <link rel="preload" as="style" href="{{ asset('build/assets/app-4c20103a.css') }}" />
+    <link rel="modulepreload" href="{{ asset('build/assets/app-30cd03a3.js') }}" />
+    <link rel="stylesheet" href="{{ asset('build/assets/app-4c20103a.css') }}" />
+    <script type="module" src="{{ asset('build/assets/app-30cd03a3.js') }}"></script>
 
     <title>{{ config('BaroCars', 'BaroCars') }}</title>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
@@ -99,7 +99,7 @@
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <button
-                            class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+                            class="relative inline-flex items-center justify-center mr-2 p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
                             <span
                                 class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                 Logout
@@ -112,9 +112,9 @@
                 @endguest
 
                 <!-- Mobile Menu Button - Hanya tampil di mobile -->
-                <button data-collapse-toggle="navbar-sticky" type="button"
-                    class="inline-flex md:hidden items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ml-2"
-                    aria-controls="navbar-sticky" aria-expanded="false">
+                <button data-collapse-toggle="navbar-mobile" type="button"
+                    class="inline-flex md:hidden items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-mobile" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 17 14">
@@ -126,16 +126,15 @@
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div class="md:hidden hidden" id="navbar-sticky">
-            <ul
-                class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+        <div class="hidden md:hidden bg-gray-500 dark:bg-gray-900" id="navbar-mobile">
+            <div class="px-4 pt-2 pb-3 space-y-1 border-t border-gray-800">
                 @yield('navbar_home')
-            </ul>
+            </div>
         </div>
     </nav>
 
 
-    <main class="object-center">
+    <main class="object-center pt-10">
         <script>
             var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
             var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -199,19 +198,23 @@
             All rights reserved ❤️.
         </p>
         <div class="flex justify-center items-center space-x-2">
-            <a href="#" data-tooltip-target="tooltip-facebook"
+            <a href="https://github.com/KStarID/Tubes_ABP" data-tooltip-target="tooltip-facebook"
                 class="inline-flex justify-center p-2 text-gray-200 rounded-lg cursor-pointer dark:text-gray-300 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                    viewBox="0 0 8 19">
+                <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
-                        d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                        d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z"
+                        clip-rule="evenodd" />
+                    <path fill-rule="evenodd"
+                        d="M9.657 15.874 7.358 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.358l-2.3 2.874a3 3 0 0 1-4.685 0ZM17 16a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
                         clip-rule="evenodd" />
                 </svg>
-                <span class="sr-only">Facebook</span>
+                <span class="sr-only">Download App</span>
             </a>
             <div id="tooltip-facebook" role="tooltip"
                 class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                Like us on Facebook
+                Download App
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
             <a href="#" data-tooltip-target="tooltip-twitter"
@@ -228,7 +231,7 @@
                 Follow us on Twitter
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
-            <a href="#" data-tooltip-target="tooltip-github"
+            <a href="https://github.com/KStarID/Tubes_ABP" data-tooltip-target="tooltip-github"
                 class="inline-flex justify-center p-2 text-gray-200 rounded-lg cursor-pointer dark:text-gray-300 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                     viewBox="0 0 20 20">
@@ -245,7 +248,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 
 </html>

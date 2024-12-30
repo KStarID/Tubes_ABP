@@ -27,10 +27,15 @@
     @endguest
 @endsection
 
-
+<style>
+    .page-layout {
+        grid-template-rows: auto 1fr;
+        min-height: 13vh;
+    }
+</style>
 
 @section('content')
-    <div class="my-5">
+    <div class="container mx-auto page-layout">
         @if (session('status'))
             <div id="alert-border-4"
                 class="flex items-center p-4 mb-4 text-yellow-800 border-t-4 border-yellow-300 bg-yellow-50 dark:text-yellow-300 dark:bg-gray-800 dark:border-yellow-800"

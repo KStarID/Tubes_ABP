@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
+<style>
+    .page-layout {
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+        padding-top: 64px;
+    }
+</style>
+
 @section('content')
-    <section class="bg-gray-50 dark:bg-gray-800">
+    <section class="mt-10 page-layout bg-gray-50 dark:bg-gray-800">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="h-8 mr-2" src="{{ asset('admin_assets/img/removebg.png') }}" alt="logo">

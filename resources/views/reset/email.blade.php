@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
+<style>
+    .page-layout {
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+        padding-top: 64px;
+    }
+</style>
+
 @section('content')
-    <div class="container mx-auto p-4">
+    <div class="container mx-auto my-10 page-layout">
         <div class="flex justify-center">
             <div class="w-full max-w-md">
                 <div class="bg-white shadow-md rounded-lg overflow-hidden">
