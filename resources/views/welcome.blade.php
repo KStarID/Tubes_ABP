@@ -88,13 +88,16 @@
                 <img id="logo-img" class="h-auto max-w-full md:max-w-xl" src="{{ asset('admin_assets/img/removebg.png') }}"
                     alt="BaroCars Logo">
                 <div class="flex flex-col justify-between p-4 leading-normal">
-                    <p class="text-center text-sm sm:text-base dark:text-white">We've seamlessly integrated Firebase into
-                        our platform,
-                        enabling powerful features like <span class="text-red-400">Realtime Database</span>, <span
-                            class="text-red-400">Authentication</span>, <span class="text-red-400">Email
-                            Verification</span>, and an <span class="text-red-400">Admin Panel</span>. With Firebase,
+                    <p class="text-center text-sm sm:text-base dark:text-white">We've seamlessly integrated Firebase and
+                        Utilizing Tailwind CSS
+                        into our platform,
+                        enabling powerful features like <span class="text-red-400">Dark Mode</span>, <span
+                            class="text-red-400">Realtime Database</span>, <span class="text-red-400">Authentication</span>,
+                        <span class="text-red-400">Email Verification</span>, and an <span class="text-red-400">Admin
+                            Panel</span>. With Firebase,
                         we ensure real-time data updates, secure user authentication, and efficient administration.
-                        Lets go Explore!</p>
+                        Lets go Explore!
+                    </p>
                     <p class="text-sm sm:text-base lg:text-lg my-2 dark:text-white">Laravel
                         v{{ Illuminate\Foundation\Application::VERSION }} (PHP
                         v{{ PHP_VERSION }})</p>
