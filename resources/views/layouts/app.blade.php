@@ -143,9 +143,9 @@
             // Fungsi untuk memperbarui logo berdasarkan tema
             function updateLogo() {
                 if (document.documentElement.classList.contains('dark')) {
-                    logoImg.src = "{{ asset('admin_assets/img/image2.png') }}";
+                    logoImg.src = "{{ secure_asset('admin_assets/img/image2.png') }}";
                 } else {
-                    logoImg.src = "{{ asset('admin_assets/img/removebg.png') }}";
+                    logoImg.src = "{{ secure_asset('admin_assets/img/removebg.png') }}";
                 }
             }
 
@@ -200,9 +200,8 @@
         <div class="flex justify-center items-center space-x-2">
             <a href="https://github.com/KStarID/Tubes_ABP" data-tooltip-target="tooltip-facebook"
                 class="inline-flex justify-center p-2 text-gray-200 rounded-lg cursor-pointer dark:text-gray-300 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
-                <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                    viewBox="0 0 24 24">
+                <svg class="w-4 h-4 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
                         d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z"
                         clip-rule="evenodd" />

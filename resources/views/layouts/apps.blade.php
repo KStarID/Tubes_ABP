@@ -186,9 +186,9 @@
 
             function updateLogo() {
                 if (document.documentElement.classList.contains('dark')) {
-                    logoImg.src = "{{ asset('admin_assets/img/image2.png') }}";
+                    logoImg.src = "{{ secure_asset('admin_assets/img/image2.png') }}";
                 } else {
-                    logoImg.src = "{{ asset('admin_assets/img/removebg.png') }}";
+                    logoImg.src = "{{ secure_asset('admin_assets/img/removebg.png') }}";
                 }
             }
 
